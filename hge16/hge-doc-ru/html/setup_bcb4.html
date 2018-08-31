@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_setup.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Borland C++ Builder 4</h1>
+<h2>1. Создание пустого проекта Win32 Application</h2>
+<p>Откройте <b>File->New...</b>, выберите <b>Console Wizard</b> из закладки <b>New</b> и нажмите <b>OK</b>:</p>
+<center><img src="bcbsetup1.gif" width=443 heght=372 alt="Create blank project"></center>
+<br>
+<p>
+В следующем окне выберите <b>Window [GUI]</b> из группы <b>Window Type</b> и нажмите <b>Finish</b>:</p>
+<center><img src="bcbsetup2.gif" width=486 heght=303 alt="Console Application Wizard"></center>
+<br>
+<h2>2. Установка путей до библиотек и заголовков</h2>
+<p>
+Откройте <b>Project->Options...</b>, выберите закладку <b>Directories/Conditionals</b> и нажмите 
+кнопку <b>...</b> чтобы указать директорию в <b>Include path</b>:</p>
+<center><img src="bcbsetup3.gif" width=424 heght=406 alt="Project Options"></center>
+<br>
+<p>
+Найдите <b>HGE</b> директорию "include" и нажмите <b>Add</b>, и <b>OK</b>:</p>
+<center><img src="bcbsetup4.gif" width=337 heght=340 alt="Directories"></center>
+<br>
+<p>
+Повторите эту операцию с <b>Library path</b>, <b>HGE</b> указывая директорию "lib\bc".
+</p>
+<h2>3. Добавление библиотек в проект</h2>
+<p>
+Откройте <b>Project->Add to Project...</b>, и напишите путь до <b>HGE</b> файлов <b>hge.lib</b> и <b>hgehelp.lib</b> 
+из директори "lib\bc" folder:</p>
+<center><img src="bcbsetup5.gif" width=428 heght=284 alt="Directories"></center>
+<br>
+<h2>4. Начинайте писать код!</h2>
+<p>
+Включите <b>hge.h</b> для доступа к функциям <b>HGE</b>. Смотрите секцию <a href="tutorials__main.html">
+Примеры</a> с простыми примерами кода.<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgegui.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Класс hgeGUIText</h1>
+<p>
+<b>hgeGUIText</b> является классом элемента текста GUI. Чтобы создать объект класса <b>hgeGUIText</b>
+можно воспользоватья конструктором:
+</p>
+<pre>
+hgeGUIText(
+  int       <i><b>id</b></i>,
+  float     <i><b>x</b></i>,
+  float     <i><b>y</b></i>,
+  float     <i><b>w</b></i>,
+  float     <i><b>h</b></i>,
+  hgeFont*  <i><b>fnt</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>id</i>
+<dd>Целый идентификатор для созданного элемента управления.
+<dt><i>x</i>
+<dd>Координата x левого верхнего угла элемента управления.
+<dt><i>y</i>
+<dd>Координата y левого верхнего угла элемента управления.
+<dt><i>w</i>
+<dd>Ширина элемента управления.
+<dt><i>h</i>
+<dd>Высота элемента управления.
+<dt><i>fnt</i>
+<dd>Указатель на объект класса <a href="hgefont__main.html">hgeFont</a>, который будет использован 
+для рисования текста.
+</dl>
+<h2>Другие методы</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><a href="hgegui_guitext_setmode.html">SetMode</a></td>
+<td>Изменяет режим выравнивания текста.</td>
+</tr>
+<tr>
+<td><a href="hgegui_guitext_settext.html">SetText</a></td>
+<td>Изменяет текст элмента.</td>
+</tr>
+<tr>
+<td><a href="hgegui_guitext_printf.html">printf</a></td>
+<td>Печатает форматированную строку в текст элемента.</td>
+</tr>
+<tr>
+<td><a href="hgegui_guitext_setcolor.html">SetColor</a></td>
+<td>Изменяет цвет элемента текста.</td>
+</tr>
+</table>
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeguictrls.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

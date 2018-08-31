@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgedistort.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">hgeDistortionMesh::SetZ</h1>
+<p>
+Устанавливает Z-глубину указанного узла сетки.
+</p>
+<pre>
+void SetZ(
+  int <i><b>col</b></i>,
+  int <i><b>row</b></i>,
+  float <i><b>z</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>col</i>
+<dd>Номер столбца узла сетки. Нумерация начинается с 0.
+<dt><i>row</i>
+<dd>Номер столбца узла сетки. Нумерация начинается с 0.
+<dt><i>z</i>
+<dd>Z-глубина, в пределах от 0.0 до 1.0.
+</dl>
+<h2>Примечания</h2>
+<p>
+Если z-буфер не используется, значение z-глубины игнорируется.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgedistort.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgedistort_getz.html">GetZ</a>,
+<a href="hgedistort_setcolor.html">SetColor</a>,
+<a href="hgedistort_setdisplacement.html">SetDisplacement</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

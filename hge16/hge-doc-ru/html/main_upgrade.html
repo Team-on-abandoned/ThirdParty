@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_main.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Апгрейд старых версий HGE</h1>
+<p>
+<b>С</b> тех пор как интерфейс <b>HGE</b> слегка меняется в новых релизах, вам придется делать 
+небольшие изменения в своем коде, написанном для предыдущих версий, чтобы скомпилировать с новыми 
+релизами <b>HGE</b>. Вот простые правила, как надо его модифицировать:
+
+</p>
+<h2>Обновление с HGE 1.4</h2>
+<p>
+<ol>
+<li><b>ОБРАТИТЕ ВНИМАНИЕ!</b> В функциях <a href="hgesprite_renderex.html">hgeSprite::RenderEx</a> и <a href="hgesprite_getboundingboxex.html">hgeSprite::GetBoundingBoxEx</a> 
+изменился порядок параметорв. Ваш старый код может скомпилироваться, но будет работать некорректно, 
+если вы пропустите это изменение.
+<li>Поведение <a href="hgeparticle_transpose.html">hgeParticleSystem::Transpose</a> слегка 
+изменилось. Используйте <a href="hgeparticle_moveto.html">MoveTo(X,Y,true)</a> чтобы воспроизвести 
+поведение старой функции <b>Transpose</b>.
+<li>Теперь по умолчанию не отслеживается изменение ограничевающего прямоугольника для системы частиц.
+Если вы этим пользовались, необходимо включить эту функцию явно с помощью вызова <a href="hgeparticle_trackboundingbox.html">TrackBoundingBox</a>.
+<li>Удалите все ссылки на поле <b>reserved</b> в <a href="hgedata_vertex.html">hgeVertex</a>, оно 
+больше не используется.
+<li>Удалите все выравнивания на -0.5 координат, которые раньше использовались для отображения 
+тексель-пиксель, теперь это делается автоматически.
+<li>Измените вызов <a href="hgefunc_inigetstring.html">Ini_GetString</a> на новый, с упрощенным 
+синтаксисом.
+<li>Удалите все вызовы <b>System_Rand</b> с <a href="hgefunc_randomfloat.html">Random_Float</a>.
+<li>Удалена переменная <b>HGE_RESOURCEFILE</b>. Используйте взамен функцию <a href="hgefunc_resourceattachpack.html">Resource_AttachPack</a>.
+<li><a href="hgefunc_musicplay.html">Music_Play</a> принимает теперь дополнительный параметр <b>loop</b>.
+
+</ol>
+</p>
+<h2>Обновление с HGE 1.3</h2>
+<p>
+<ol>
+<li>Удалите вызовы <b>Mouse_GetPosition</b>, <b>Mouse_GetWheel</b>, <b>Key_GetState</b>, <b>Key_GetKey</b> 
+с <a href="hgefunc_inputgetmousepos.html">Input_GetMousePos</a>, <a href="hgefunc_inputgetmousewheel.html">Input_GetMouseWheel</a>, <a href="hgefunc_inputgetkeystate.html">Input_GetKeyState</a>, <a href="hgefunc_inputgetkey.html">Input_GetKey</a> 
+соответсвенно
+<li>Методы класса <a href="hgesprite__main.html">hgeSprite</a> <b>SetColorI</b> и <b>SetZI</b> были 
+удалены, взамен используете улучшенные - <a href="hgesprite_setcolor.html">SetColor</a> и <a href="hgesprite_setz.html">SetZ</a>
+<li>Если вы создали нестандартные контролы, обновите свои методы <a href="hgeguio_keyclick.html">hgeGUIObject::KeyClick</a>. 
+Теперь он принимает дополнительный символьный параметр.
+<li>Если вы использовали стандартные контролы подключите дополнительный заголовочный файл: <b>hgeguictrls.h</b>
+</ol>
+</p>
+<h2>Обновление с HGE 1.2</h2>
+<p>
+<ol>
+<li>Удалите все проверки версий вызовом <b>System_GetVersion</b> если они у вас были.
+<li>Просто укажите в вызове <a href="hgefunc_interfaceget.html">hgeCreate</a> <b>HGE_VERSION</b> в 
+качестве параметра.
+<li><a href="hgeanim_play.html">hgeAnimation::Play</a> теперь не требует параметров. Пользуйтесь <a href="hgeanim_setmode.html">hgeAnimation::SetMode</a> 
+для установки режима воспроизведения.
+<li>Вам придется переписать код под новую архитектуру GUI (смотри <a href="hgegui__main.html">hgeGUI</a> and <a href="hgeguio__main.html">hgeGUIObject</a>).
+Если вы не пользовались собственными контролами просто замените вызовы <b>hgeGUI::ProcessInput</b> 
+на <a href="hgegui_update.html">hgeGUI::Update</a>.
+<li>FPS редактора систем частиц по умолчанию теперь 50. Рекомендуется настроить все ваши системы под 
+это значение. Хотя вы можете вернуть предыдущее поведение редактораизменив "UpdatesPerSec=0" в файле 
+<a href="peditor_ini.html">particleed.ini</a>.
+</ol>
+</p>
+<h2>Обновление с HGE 1.1</h2>
+<p>
+<ol>
+<li>Больше нет необходимости линковаться с <b>d3d8.lib</b>, <b>d3dx8.lib</b> и <b>winmm.lib</b>. 
+Удалите из из проекта. Линкуйте проект с правильной версией <b>hge.lib</b> и <b>hgehelp.lib</b>, 
+соответствующей вашему компилятору.
+<li>Измените все вызовы <b>Interface_Get</b> на <a href="hgefunc_interfaceget.html">hgeCreate</a>.
+<li>Измените все вызовы <b>Interface_Release</b> на <a href="hgefunc_interfacerelease.html">Release</a>.
+<li>Измените все вызовы <b>System_LoadResource</b> на <a href="hgefunc_resourceload.html">Resource_Load</a>.
+<li><b>ВАЖНО:</b> Ресурсы, которые загружены функцией <a href="hgefunc_resourceload.html">Resource_Load</a> 
+теперь должны освобождаться вызовом <a href="hgefunc_resourcefree.html">Resource_Free</a> а не 
+оператором <b>delete</b> как было раньше.
+<li>Если вы пользовались функцией <b>Key_Clear</b>, можете заменить ее на вызов <a href="hgefunc_inputgetkey.html">Key_GetKey</a>.
+</ol>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

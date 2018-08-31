@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeresource.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">hgeResourceManager::GetParticleSystem</h1>
+<p>
+Возвращает указатель на систему частиц по имени.
+</p>
+<pre>
+hgeParticleSystem *GetParticleSystem(
+  const char *<i><b>name</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>name</i>
+<dd>Название системы частиц.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+В случае успеха, возвращает указатель на объект класса <a href="hgeparticle__main.html">hgeParticleSystem</a>. 
+В противном случае 0.
+</p>
+<h2>Примечания</h2>
+<p>
+Чтобы использовать систему частиц в <a href="hgeresource__main.html">hgeResourceManager</a>, 
+необходимо объявить ее в скрипте ресурсов.
+<br><br>
+Если система частиц еще не была создана, то она будет создана. В противном случае будет возвращен 
+указатель на существующую сиетму частиц.
+<br><br>
+Можно использовать член класса <a href="hgeparticle_datamembers.html">info</a> в возвращенном 
+указателе, чтобы создать много экземпляров объектов класса <a href="hgepmanager__main.html">hgeParticleManager</a>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeresource.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

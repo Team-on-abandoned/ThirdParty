@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Hardware accelerated 2D games engine</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::System_Snapshot</h1>
+<p>
+Сохраняет снимок текущего экрана в файл.
+</p>
+<pre>
+void System_Snapshot(
+  const char *<i><b>filename</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>filename</i>
+<dd>Абсолютный или относительный путь к файлу, куда необходимо сохранить снимок. Если равен 0 или 
+опущено, снимок записывается в директорию приложения под именем <b>shotXXX.bmp</b>, где XXX следющее 
+свободное число.
+</dl>
+<h2>Примечания</h2>
+<p>
+Снимок записывается в файле формата <b>BMP</b>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

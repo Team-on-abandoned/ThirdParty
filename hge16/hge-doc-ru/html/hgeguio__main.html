@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="switchContents('cnt_main.html','cnt_hgeguio.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Вспомогательный класс hgeGUIObject</h1>
+<p>
+<b>hgeGUIObject</b> является абстрактным классом, используемым для определения новых элементов 
+управления. Стандартные классы <a href="hgegui_guitext.html">hgeGUIText</a>,
+<a href="hgegui_guibutton.html">hgeGUIButton</a> и <a href="hgegui_guislider.html">hgeGUISlider</a> 
+являются произвольными от него. Вы можете создавать свои собственные элементы управления, 
+наследуя их от класса <b>hgeGUIObject</b>.
+<br><br>
+Все методы класса <b>hgeGUIObject</b> являются <b>virtual</b>. Если вам не нужны какие-то из, просто не
+переопределяйте их. Единственное, необходимо переопределить
+<a href="hgeguio_constructor.html">Конструктор</a> и метод <a href="hgeguio_render.html">Render</a>.
+Так же можете пользоваться виртуальным деструктором.
+</p>
+<h2>hgeGUIObject methods</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=22%><a href="hgeguio_constructor.html">Коструктор</a></td>
+<td>Должен инициализировать объект класса <b>hgeGUIObject</b>.</td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td><a href="hgeguio_render.html">Render</a></td>
+<td>Должент рисовать объект на экране.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_update.html">Update</a></td>
+<td>Вызывается каждый раз, когда GUI обновляется, чтобы сделать возможной анимацию элментов 
+управления.</td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td><a href="hgeguio_enter.html">Enter</a></td>
+<td>Вызывается, когда GUI начинает появляться на экране.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_leave.html">Leave</a></td>
+<td>Вызывается, когда GUI начинает исчезать с экрана.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_isdone.html">IsDone</a></td>
+<td>Используется для проверки, закончилась анимация Начала/Конца.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_focus.html">Focus</a></td>
+<td>Вызывается, когда элемент получает или теряет фокус ввода с клавиатуры.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_mouseover.html">MouseOver</a></td>
+<td>Вызывается, уогда курсор мыши входит/покидает область элемента управления.</td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td><a href="hgeguio_mousemove.html">MouseMove</a></td>
+<td>Уведомляет элемент о том, что курсор мыши двигается.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_mouselbutton.html">MouseLButton</a></td>
+<td>Уведомляет элемент управления о том, что изменилось состояние левой кнопки мыши.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_mouserbutton.html">MouseRButton</a></td>
+<td>Уведомляет элемент управления о том, что изменилось состояние правой кнопки мыши.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_mousewheel.html">MouseWheel</a></td>
+<td>Уведомляет элемент управления о том, что колесико мыши повернуто.</td>
+</tr>
+<tr>
+<td><a href="hgeguio_keyclick.html">KeyClick</a></td>
+<td>Уведомляет элемент управления о том, что нажата клавиша.</td>
+</tr>
+</table>
+</p>
+<h2>Related information</h2>
+<p>
+<a href="hgeguio_datamembers.html">Члены класса hgeGUIObject</a>
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgegui.h<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgedata.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Структура событий ввод в HGE</h1>
+<p>
+Структура событий ввода используются в функции <a href="hgefunc_inputgetevent.html">Input_GetEvent</a>, для
+получения буферизированных событий ввода:
+</p>
+<pre>
+struct hgeInputEvent
+{
+  int    <b>type</b>;
+  int    <b>key</b>;
+  int    <b>flags</b>;
+  int    <b>chr</b>;
+  int    <b>wheel</b>;
+  float  <b>x</b>;
+  float  <b>y</b>;
+};
+</pre>
+<h2>Члены</h2>
+<dl>
+<dt>type
+<dd>Тип события, может принимать одно из следующих значений:<br>
+<b>INPUT_KEYDOWN</b> - была нажата клавиша на клавиатуре<br>
+<b>INPUT_KEYUP</b> - была отпущена клавиша на клавиатуре<br>
+<b>INPUT_MBUTTONDOWN</b> - была нажата кнопка мыши<br>
+<b>INPUT_MBUTTONUP</b> - была отпущена кнопка мыши<br>
+<b>INPUT_MOUSEMOVE</b> - был перемещен курсор мыши<br>
+<b>INPUT_MOUSEWHEEL</b> - было прокручено колесико мыши<br>
+<dt>key
+<dd>Код клавиши. Поле имеет значение только для событий
+<b>INPUT_KEYDOWN</b>, <b>INPUT_KEYUP</b>, <b>INPUT_MBUTTONDOWN</b>
+и <b>INPUT_MBUTTONUP</b>.
+<dt>flags
+<dd>Поразрядный или комбинация (|) последующих констант, определяющаяя контекст события:
+<b>HGEINP_SHIFT</b> - была нажата одна из клавиш Shift<br>
+<b>HGEINP_CTRL</b> - была нажата одна из клавиш Ctrl<br>
+<b>HGEINP_ALT</b> - была нажата одна из клавиш Alt<br>
+<b>HGEINP_CAPSLOCK</b> - был включен Caps Lock<br>
+<b>HGEINP_NUMLOCK</b> - был включен Num Lock<br>
+<b>HGEINP_SCROLLLOCK</b> - былвключен Scroll Lock<br>
+<b>HGEINP_REPEAT</b> - для <b>INPUT_KEYDOWN</b>: событие было сгенерировано из-за функуии 
+автоповра; для  <b>INPUT_MBUTTONDOWN</b>: событие означает двойной щелчок<br>
+<dt>chr
+<dd>Код символа, согласно текущему состоянию клавиатуры и выбранной локали. Поле имеет значение только
+для событий <b>INPUT_KEYDOWN</b> и <b>INPUT_KEYUP</b>.
+<dt>wheel
+<dd>Число зубчиков колесика мыши, на которое оно было повернуто.
+Положительное значение означает, что колесико было повернуто вперед, от пользователя.
+Отрицательное значение означает, что колесико было повернуто назад, к пользователю.
+Поле имеет значение только для события <b>INPUT_MOUSEWHEEL</b>.
+<dt>x
+<dd>Mouse cursor X-position.
+<dt>y
+<dd>Mouse cursor Y-position.
+</dl>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_inputgetevent.html">Input_GetEvent</a>,
+<a href="hgeconst_keycodes.html">Коды клавиш</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

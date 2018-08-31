@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_setup.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Visual Studio .NET</h1>
+<h2>1. Установка путей к библиотекам и путям</h2>
+<p>Откройте <b>Tools->Options->Projects->VC++ Directories</b>, добавьте путь до <b>HGE</b> 
+директории "include" и передвиньте на верх:</p>
+<center><img src="vsnetsetup1.gif" width=486 heght=382 alt="Adding include path"></center>
+<br>
+<p>
+На той же закладке выберите <b>Library files</b> из выпадающего списка <b>Show directories for</b>, 
+и добавьте путь к <b>HGE</b> директории "lib\vc" и передвиньте ее наверх:
+</p>
+<center><img src="vsnetsetup2.gif" width=486 heght=382 alt="Adding libraries path"></center>
+<br>
+<p>
+Нажмите <b>OK</b>.
+<br><br>
+Теперь можно использовать <b>HGE</b> в ваших проектах без указания ее точного местоположения. Этот 
+шаг нужно сделать только один раз, для всех проектов.
+</p>
+<h2>2. Создание пустого проекта Win32 Application</h2>
+<p>
+Откройте закладку <b>File->New...->Projects</b>, выберите <b>Win32 Project</b>, укажите
+<b>Project name</b> и <b>Location</b>:
+</p>
+<center><img src="vsnetsetup3.gif" width=486 heght=393 alt="Creating blank project, 1 of 2"></center>
+<br>
+<p>
+Нажмите <b>OK</b>.
+<br><br>
+На следующем экране выберите <b>Application Settings</b>.
+Удостоверьтесь, что в группе <b>Application Type</b> выбрано <b>Windows Application</b>. Теперь 
+поставьте галочку <b>Empty project</b> в группе <b>Additional Options</b> или оставьте пустой, если 
+хотите чтобы была создана простой проект:
+</p>
+<center><img src="vsnetsetup4.gif" width=486 heght=437 alt="Creating blank project, 2 of 2"></center>
+<br>
+<p>
+Нажмите <b>Finish</b>. Вуаля! Теперь у вас создан проект.
+</p>
+<h2>3. Add libraries to the project</h2>
+<p>
+Откройте <b>Project->Properties...->Linker->Input</b> и добавьте в <b>Additional Dependencies</b> 
+следующие библиотеки:
+</p>
+<ul>
+<li><b>hge.lib</b> - библиотека импорта для DLL системного слоя HGE
+<li><b>hgehelp.lib</b> - библиотека вспомогательных классов HGE
+</ul>
+<p>
+Если вы не вызываете никакие функции <b>Windows</b>, то эти две библиотеки - все что нужно для 
+проекта.
+</p>
+<center><img src="vsnetsetup5.gif" width=486 heght=440 alt="Adding import libraries to a project"></center>
+<br>
+<p>
+Затем выберите <b>Release</b> из выподающего списка <b>Configuration</b> и повторите операцию.
+<br><br>
+Нажмите <b>OK</b>.
+</p>
+<h2>4. Начинайте писать код!</h2>
+<p>
+Включите заголовок <b>hge.h</b> для доступа к функциям <b>HGE</b>. Смотрите секцию
+<a href="tutorials__main.html">Примеры</a> простыми примерами кода.<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

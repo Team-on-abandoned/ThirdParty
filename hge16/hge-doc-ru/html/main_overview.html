@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_main.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<div class=big>HGE version 1.53</div>
+Copyright &copy; 2003-2005, Relish Games. All rights reserved.<br>
+<a href="http://hge.relishgames.com" target=_blank>http://hge.relishgames.com</a>
+<h1>Обзор</h1>
+<p>
+<b>HGE</b> легкий в использовании и в тоже время мощный <b>2d игровой движек</b> с поддержкой 
+аппаратного ускорения. Это полнофункциональное посреднеческая библиотека для всех, кто хочет 
+разрабатывать быстро и легко качественные коммерческие <b>2D игры</b>. Она покрывает все возможные <b>2D 
+жанры</b>: вы можете создать все, начиная от простых игр-головоломок до продвинутых многослойных 
+платформеров и стратегий не думая о неигровой коде вообще! И вам совершенно не надо знать ничего о "оконных сообщениях", 
+программировании под <b>DirectX</b> и всякомо таком. Напротив, вы можете начать разработку своей
+собственной игры втечение <b>15 минут</b>!
+</p>
+<p>
+<b>HGE</b> работает на Microsoft Windows 98, 2000, NT, ME, XP and требует <b>DirectX 8.0</b>.
+Она даже запустится на low-end видеокартах, включая встроенные, такие как <b>Intel Solano</b> (i815 chipset).
+<b>HGE</b> можно использловать практически с любым C++ компилятором включая
+<b>Visual C++</b>, <b>Borland C++</b>, <b>MinGW</b> и <b>Metrowerks Codewarrior</b>.
+<br><br>
+<table width=484 cellspacing=0 cellpadding=0>
+<tr>
+<td align=center><center class=copyr><img src="shot1.gif" width=117 height=88 hspacing=0 alt="HGE Screenshot" border=0></center></td>
+<td align=center><center class=copyr><img src="shot2.gif" width=117 height=88 hspacing=0 alt="HGE Screenshot" border=0></center></td>
+<td align=center><center class=copyr><img src="shot3.gif" width=117 height=88 hspacing=0 alt="HGE Screenshot" border=0></center></td>
+<td align=center><center class=copyr><img src="shot4.gif" width=117 height=88 hspacing=0 alt="HGE Screenshot" border=0></center></td>
+</tr>
+</table>
+</p>
+<h1>Ключевые возможности</h1>
+<p>
+<table width=484 cellspacing=0 cellpadding=0>
+<tr>
+<td valign=top><img src="feat3.gif" width=17 height=12 alt=""></td>
+<td><b>Строгая концентрация на "2D играх"</b><br>
+Проблемно-ориентированный дизайн. Ничего лишнего и множество высокоуровненвых функций.</td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=8></td></tr>
+
+<tr>
+<td valign=top><img src="feat3.gif" width=17 height=12 alt=""></td>
+<td><b>Простой интерфейс и черезвычайная легкость</b><br>
+Вам не надо ничего знать о системном программировании и не нужны дополнительные библиотеки. Классы и 
+заголовочные файлы - все что нужно. Очень легко установить и пользоваться.</td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=8></td></tr>
+
+<tr>
+<td valign=top><img src="feat3.gif" width=17 height=12 alt=""></td>
+<td><b>Технические преимущества</b><br>
+HGE построен на современном Direc3D API, что позволяет множество спецэффектов и отличную
+производительность. Альфа-смешивание, оттенки, геометрические преобразования и т.д. без каких либо
+падений производительности!</td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=8></td></tr>
+
+<tr>
+<td valign=top><img src="feat3.gif" width=17 height=12 alt=""></td>
+<td><b>Полная и понятная документация</b><br>
+Все возможности сгруппированы и полностью описаны, предоставлено много советов полезных для любых 
+игр.</td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=8></td></tr>
+
+<tr>
+<td valign=top><img src="feat3.gif" width=17 height=12 alt=""></td>
+<td><b>HGE just feels right!</b><br>
+HGE строго последовательный. Каждая функциональность тщательно планируются имеет взаимосвязь с 
+остальными.</td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=8></td></tr>
+
+<tr>
+<td valign=top><img src="feat3.gif" width=17 height=12 alt=""></td>
+<td><b>Доступность!</b><br>
+HGE - свободна для некоммерческого использования. Существуют также доступная shareware и коммерческая лицензии.</td>
+</tr>
+</table>
+</p>
+<h1>Архитектура</h1>
+<p>
+<b>HGE</b> представляет три абстрактных слоя, покрывающие всевозможные требования одиночного 
+программиста игр или команды:
+<br><br>
+<table width=484 cellspacing=0 cellpadding=0>
+<tr>
+ <td width=33%><b>Функции ядра</b></td>
+ <td width=33%><b>Вспомогательные классы</b></td>
+ <td><b>Внешние инструменты</b></td>
+</tr>
+<tr>
+<td>Все системно-зависимые функции и процедуры.</td>
+<td>Классы для игровых объектов высокого уровня.</td>
+<td>Набор инструментов, необходимый для разработки игр.</td>
+</tr>
+</table>
+<br>
+<img src="architecture.gif" width=484 height=234 alt="HGE Architecture">
+</p>
+<h1>Функции ядра</h1>
+<p>
+<b>Аппаратное ускорение 2D графики</b><br>
+Поддержка форматов BMP, DDS, DIB, JPG, PNG, TGA; оконный или полноэкранный режимы;
+ точное тексель-в-пиксель отображение; произвольные формы вывода; рисование линиий или заполненных 
+областей; рендеринг в текстуру; прямой доступ к данным текстуры; отсекаюшие области; различные виды 
+смешивания; альфа-каналы и смешивание; подсветка; преобразования целых сцен; z-буфер.
+<br><br>
+<b>Звуковые эффекты и проигрывание музыки</b><br>
+Поддержка форматов WAV, MP3, MP2, MP1 и OGG для звуковых файлов;
+поддержка MO3, IT, XM, S3M, MTM, MOD и UMX форматов музыки;
+воспроизведение сжатых потоков; регулируемая громкость, панорамирование и контроль высоты.
+<br><br>
+<b>Устройства ввода: клавиатура и мышь</b><br>
+Определеяет состояние клавиш и нажатий; определяет название клавиш; преобразует коды клавиш в
+символы; определяет положение мыши и ролика; событийная и опросная обработка устройств ввода.
+<br><br>
+<b>Ресурсы</b><br>
+Загрузка ресурсов из дисковых файлов; загрузка из ZIP архива (пакет ресурсов);
+легкое переключение между этими режимами; поддержка много-пакетных ресурсов.
+<br><br>
+<b>Работа со временем</b><br>
+Синхронизация частоты кадров с нефиксированным FPS; режим фиксированного FPS; слежение за частотой 
+обновления; подсчет FPS; обработка времени простоя.
+<br><br>
+<b>Инициализация и файл протокола</b><br>
+Читает и пишет строки, целые числа и числа с плавоющей запятой; вывод протокола в формате printf.
+<br><br>
+</p>
+<h1>Вспомогательные классы</h1>
+<p>
+<b>Спрайты и анимация</b><br>
+Прозрачный интерфейс ко всем функциям железа; поддержка точки привязки (якорь); поддержка 
+вытягивания, вращения и масштабирования; горизонтальное и вертикальное отражение; функции работы с 
+временем; различные режимы проигрывания.
+<br><br>
+<b>Шрифты</b><br>
+Загрузка и отображение растровых шрифтов; различные способы выравнивания текста; тень,
+масштабирование и вращение текста; вычисление длины строки; формат printf для функций вывода.
+<br><br>
+<b>Система частиц и сетка искажения</b><br>
+Продвинутая 2д система частиц, позволяющая создавать такие эффекты, как дым, взрывы, магия и т.д; 
+менеджер системы частиц; функции работы со временем и перемещением; ограничивающий прямоугольник и 
+определение столкновений; вода, линзы, скрутка страницы, изгиб и даже морфинг в реальном времени.
+<br><br>
+<b>Менеджер ресурсов</b><br>
+Powerful resource script; on the fly script switching; create complex
+objects with just a single function call; fully automated memory management;
+precaching and purging of specific resource groups.
+<br><br>
+<b>Графический интерфес пользователя</b><br>
+Простое и гибкое управление контролами; стандартные контролы: текст, кнопки и ползунки; поддержка
+сильно активных, анимированных ГУИ.
+<br><br>
+<b>Векторы и цвета</b><br>
+Полный набор операций и функций для поддержки 2д векторов; полный набор операций для вычислений с 
+цветами в формате ARGB; аппаратное преобразование цветов; фиксирование цветов.
+<br><br>
+<font color=#CCCCCC><b>Определение столкновений</b></font>
+&nbsp;&nbsp;<font color=#C00000><b>(в разработке)</b></font><br>
+<font color=#CCCCCC>
+Ориентированные ограничивающие прямоугольники (OBB), определение столкновений по радиусу и 
+попиксельное; определение столкновений в преобразованных объектах; проверка развертки; гибко 
+настраиваемые функции.
+</font>
+<br><br>
+<font color=#CCCCCC><b>Тайловые карты</b></font>
+&nbsp;&nbsp;<font color=#C00000><b>(в разработке)</b></font><br>
+<font color=#CCCCCC>
+Многослойные карты; карты прокрутки; манипуляции со свойствами тайлов; анимация тайлов; 
+пользовательские тайловые кисти; преобразование координат; отсечение карт.
+</font>
+</p>
+<h1>Внешние инструменты</h1>
+<p>
+<table width=484 cellspacing=0 cellpadding=0>
+
+<tr>
+ <td align=center>
+ <img src="tools_res.gif" width=117 height=88 alt="Resources Compiler" border=0 hspace=8>
+ </td>
+ <td valign=top>
+ <b>Упаковщики ресурсов</b><br>
+ HGE пользуется широкораспространенным форматом архивов ZIP для упаковки ресурсов. Поэтому вы можете
+ упаковывать ресурсы в своей игре своим любимым упаковщиком. Можете даже защитить их паролем.
+ </td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=10></td></tr>
+
+<tr>
+ <td align=center>
+ <img src="tools_ped.gif" width=117 height=88 alt="HGE Particle Systems Editor" border=0 hspace=8>
+ </td>
+ <td valign=top>
+ <b>Редактор систмем частиц</b><br>
+ Позволяет визуально редактировать все параметры продвинутой 2д системы частиц. Вы можете изменять 
+ направления, скорости, время жизни, траектории, цвет и прозрачность частиц и т.д., при этом 
+ наблюдая изменения в реальном времени.
+ </td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=10></td></tr>
+
+<tr>
+ <td align=center>
+ <img src="tools_fed.gif" width=117 height=88 alt="HGE Bitmap Font Editor" border=0 hspace=8>
+ </td>
+ <td valign=top>
+ <font color=#CCCCCC><b>Редактор Растровых Шрифтов</b></font>
+ &nbsp;&nbsp;<font color=#C00000><b>(в разработке)</b></font><br>
+ <font color=#CCCCCC>
+ Позволяет строить готовые к использованию шрифты, используя установленные системные шрифты или 
+ готове изображения. Вы можете назначать диапазоны символов и пробелов, использовать альфа-каналы и 
+ цвет. Потом добавить дополнительные эффекты в построенный шрифт в своем графическом редакторе.
+ </font>
+ </td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=10></td></tr>
+
+<tr>
+ <td align=center>
+ <img src="tools_med.gif" width=117 height=88 alt="HGE Tile Map Editor" border=0 hspace=8>
+ </td>
+ <td valign=top>
+ <font color=#CCCCCC><b>Редактор тайловых карт</b></font>
+ &nbsp;&nbsp;<font color=#C00000><b>(в разработке)</b></font><br>
+ <font color=#CCCCCC>
+ Позволяет рисовать карты из тайлов, анимаций и редактировать свойства тайлов. Также поддерживаются
+ кисти шаблонов, областей и путей. Вы можете использовать неограниченное число видимых и скрытых 
+ слоев и определять их свойства.
+ </font>
+ </td>
+</tr>
+<tr><td colspan=2><img src="1.gif" width=1 height=10></td></tr>
+
+</table>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

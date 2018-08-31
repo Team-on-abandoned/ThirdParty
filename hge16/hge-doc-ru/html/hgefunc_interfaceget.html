@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Функция hgeCreate</h1>
+<p>
+Создает объект <b>HGE</b>, если требуется, и возвращает указатель на интерфейс <b>HGE</b>.
+</p>
+<pre>
+HGE *hgeCreate(
+  int <i><b>ver</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>ver</i>
+<dd>Номер версии <b>HGE</b> API. Просто нужно послать сюда константу <b>HGE_VERSION</b>.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+Если загруженная HGE.DLL содержит совместимый API, <b>hgeCreate</b> вернет указатель на интерфейс 
+<b>HGE</b>. В противном случае вернет 0.
+</p>
+<h2>Примечания</h2>
+<p>
+<b>hgeCreate</b> - глобальная С функция. Она расположена вне всех классов и импортируется из DLL <b>HGE</b>.
+<br><br>
+Для доступа к функциям <b>HGE</b>, вам необходим указатель на интерфейс, который возвращает функция
+<b>hgeCreate</b>.
+<b>hgeCreate</b> создает объект <b>HGE</b> если это необходимо и увеличивает внутренний счетчик
+ссылок. Чтобы освободить полученный интерфейс, необходимо вызвать функцию <a href="hgefunc_interfacerelease.html">Release</a>.
+<br><br>
+Вы можете вызывать функцию <b>hgeCreate</b> каждый раз, когда необходим доступ к <b>HGE</b>,
+а затем вызывать <a href="hgefunc_interfacerelease.html">Release</a>. Или можно получить указатель
+на интерфейс один раз в начале и сохранить его в глобальной переменной, затем освободить в процессе
+очистки в конце приложения. Хотя последний вариант считается 'плохим стилем', он прекрасно работает
+в небольших проектах.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_interfacerelease.html">Release</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

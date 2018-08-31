@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeguio.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Конструктор класса hgeGUIObject</h1>
+<p>
+Чтобы создать новые элементы управления GUI необходимо определить хотябы <b>Конструктор</b> и метод <a href="hgeguio_render.html">Render</a>.
+Конструктор должен инициализировать следующие члены класса <a href="hgeguio__main.html">hgeGUIObject</a>:
+<b>id</b>, <b>bStatic</b>, <b>bVisible</b>, <b>bEnabled</b>, <b>rect</b>.
+Смотрите <a href="hgeguio_datamembers.html">Члены класса hgeGUIObject</a>, для более подробной 
+информации.
+<br><br>
+Используйте следующий синтаксис C++, чтобы определить класс производный от <a href="hgeguio__main.html">hgeGUIObject</a>:
+</p>
+<pre>
+class hgeCustomGUIControl : public hgeGUIObject
+{
+	hgeCustomGUIControl(...);
+};
+</pre>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgegui.h<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

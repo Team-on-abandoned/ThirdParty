@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Resource_EnumFolders</h1>
+<p>
+Перечисляет дирекотрии по заданной маске.
+</p>
+<pre>
+char *Resource_EnumFolders(
+  const char *<i><b>wildcard</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>wildcard</i>
+<dd>Абсолютная или относительная маска включая специальные символы "?" и "*" чтобы начать новое 
+перечисление, или 0 для того, чтобы продолжить начатое перечисление.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+Возвращает имя следющей найденной директории, или 0, если директорий больше нет.
+</p>
+<h2>Примечания</h2>
+<p>
+<b>Resource_EnumFolders</b> возвращает только имя директории без пути. Она так же пропускает файлы, 
+для перечисления файлов используйте <a href="hgefunc_resourceenumfiles.html">Resource_EnumFiles</a>.
+<br><br>
+Для перечисления всех директорий в некотором месте, используйте в маске специальный символ "*".
+Например: <b>Resource_EnumFolders("data\*")</b> начнет перечисление всех директорий внутри 
+директории "data" которая расположена в директории приложения.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_resourceenumfiles.html">Resource_EnumFiles</a>,
+<a href="hgefunc_resourcemakepath.html">Resource_MakePath</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

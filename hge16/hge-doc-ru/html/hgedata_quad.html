@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgedata.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Структура четырехугольника в HGE</h1>
+<p>
+<b>Ч</b>етырехугольник - это произвольно окрашенный и текстурированный 4-х вершинный 2Д полигон. Это 
+фундаментальный графический примитив в <b>HGE</b>. Для описания четырехугольника используется 
+следующая структура <b>hgeQuad</b>:
+</p>
+<pre>
+struct hgeQuad
+{
+  hgeVertex  <b>v</b>[4];
+  HTEXTURE   <b>tex</b>;
+  int        <b>blend</b>;
+};
+</pre>
+<h2>Члены</h2>
+<dl>
+<dt>v
+<dd>Массив четырех вершин, описывающих четырехугольник.
+<dt>tex
+<dd>Идентификатор текстуры четырехугольника или 0.
+<dt>blend
+<dd>Режим смешивания четырехугольника.
+</dl>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_gfxrenderquad.html">Gfx_RenderQuad</a>,
+<a href="hgedata_vertex.html">Структура вершины</a>,
+<a href="hgeconst_blendmode.html">Режимы смешивания</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

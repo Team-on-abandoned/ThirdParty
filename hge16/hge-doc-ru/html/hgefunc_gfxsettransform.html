@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Gfx_SetTransform</h1>
+<p>
+Устанавливает глобальное преобразование для всех графических объектов далее.
+</p>
+<pre>
+void Gfx_SetTransform(
+  float <i><b>x</b></i> = 0,
+  float <i><b>y</b></i> = 0,
+  float <i><b>dx</b></i> = 0,
+  float <i><b>dy</b></i> = 0,
+  float <i><b>rot</b></i> = 0,
+  float <i><b>hscale</b></i> = 0,
+  float <i><b>vscale</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>x</i>
+<dd>Координата X центральной точки.
+<dt><i>y</i>
+<dd>Координата Y центральной точки.
+<dt><i>dx</i>
+<dd>Смещение X центральной точки.
+<dt><i>dy</i>
+<dd>Смещение Y центральной точки.
+<dt><i>rot</i>
+<dd>Уголвращения в радианах.
+<dt><i>hscale</i>
+<dd>Множитель горизонтального масштабирования.
+<dt><i>vscale</i>
+<dd>Множитель вертикального масштабирования.
+</dl>
+<h2>Примечания</h2>
+<p>
+Преобразования применяются в следующем порядке: сначала масштабирование, затем поворот, в конце 
+перемещение.
+<br><br>
+Если все параметры равны 0 или опущены, глобальная трансформация сбрасывается. Когда изменяется цель 
+рендеринга, глобальная трансформация так же сбрасывается.
+<br><br>
+<b>Gfx_SetTransform</b> сбрасывает в видеоадаптер все накопленные графические примитивы.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

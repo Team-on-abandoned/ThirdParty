@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Random_Seed</h1>
+<p>
+Устанавливает начальное значение генератора случайных чисел.
+</p>
+<pre>
+void Random_Seed(
+  int <i><b>seed</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>seed</i>
+<dd>Начальное значение генератора случайных чисел. Если равно 0, в качестве значения выбирается 
+текущее время.
+</dl>
+<h2>Примечания</h2>
+<p>
+Генератор случайных чисел выдает псевдо-случайные последовательности. Начальное значение определяет 
+следющую сгенерированную последовательность. Поэтому вы можете извлечь пользу из этой функции, 
+определяя длинные серии чисел с одинаковым начальным числом (например, это может быть полезно в 
+генерации карт/уровней).
+<br><br>
+Чтобы поставить случайную последовательность в случайную точку, используйте 0 в качестве начального 
+значения.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_randomint.html">Random_Int</a>,
+<a href="hgefunc_randomfloat.html">Random_Float</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

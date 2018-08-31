@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Texture_Load</h1>
+<p>
+Загружает текстуру из памяти, архива ресурсов или с диска.
+</p>
+<pre>
+HTEXTURE Texture_Load(
+  const char *<i><b>filename</b></i>,
+  DWORD <i><b>size</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>filename</i>
+<dd>Имя файла текстуры.
+<dt><i>size</i>
+<dd>Если этот параметр не равен 0, он означает размер блока памяти, содержащего текстуру в одном из 
+известных форматов и параметр <b>filename</b> рассматривается как указатель на этот блок.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+В случае успеха, возвращается идентификатор текстуры. В противном случае 0.
+</p>
+<h2>Примечания</h2>
+<p>
+Поддерживаются следующие графические форматы <b>BMP</b>, <b>DDS</b>, <b>DIB</b>, <b>JPG</b>, <b>PNG</b> and <b>TGA</b>.
+Формат <b>DDS</b> позволяет использоваться технологии сжатия DXT1-DXT5, что приводить к увеличению 
+производительности и уменьшению необходимой видео памяти.
+<br><br>
+Значения размеров текстуры должны быть степенью 2. Если это условие не выполнено, размеры текстуры
+автоматически дополняются до ближайшей степени 2, большей указанного значения.
+<br><br>
+Если <b>filename</b> указывает относительный путь, файл текстуры сначала ищется во всех 
+присоединенных функцией <a href="hgefunc_resourceattachpack.html">Resource_AttachPack</a> архивах ресурсов, 
+затем в директории приложения.
+Если <b>filename</b> указывает абсолютный путь, файл текстуры загружается напрямую с диска.
+<br><br>
+Если функция завершается аварийно, то сообщение об ошибке может быть получено при помощи вызова
+<a href="hgefunc_systemgeterror.html">System_GetErrorMessage</a>. Также, если установлена переменная
+ <a href="hgeconst_systemstate.html#HGE_LOGFILE">HGE_LOGFILE</a> сообщение об ошибке записывается в
+ файл протокола.
+<br><br>
+Если текстура больше не нужна, ее необходимо удалить с помощью вызова функции <a href="hgefunc_texturefree.html">Texture_Free</a>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_texturecreate.html">Texture_Create</a>,
+<a href="hgefunc_texturefree.html">Texture_Free</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_main.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Содержание пакета</h1>
+<p>
+<b>HGE 1.53</b> Архив должен содержать следующие файлы:
+</p>
+<pre>
+hge.dll		  DLL библиотеки HGE 1.53
+bass.dll		  DLL библиотеки BASS 2.1
+license.txt	  Лицензионное соглашение HGE
+readme.txt	  Краткое описание HGE
+<b>doc\		  Он-лайн документация HGE</b>
+  <b>html\</b>		    Файлы документации
+  index.html	    Указатель документации
+<b>include\		  Заголовки HGE</b>
+  hge.h		    Заголовок системного слоя
+  hgeanim.h	    Заголовок класса hgeAnimation
+  hgecolor.h	    Заголовок класса hgeColor
+  hgedistort.h	    Заголовок класса hgeDistortionMesh
+  hgefont.h	    Заголовок класса hgeFont
+  hgegui.h	    Заголовоки классов hgeGUI и hgeGUIObject
+  hgeguictrls.h	    Заголовок для стандартных элементов управления
+  hgeparticle.h 	    Заголовок класса hgeParticleSystem
+  hgerect.h	    Заголовок класса hgeRect
+  hgeresource.h	    Заголовок класса hgeResourceManager
+  hgesprite.h	    Заголовок класса hgeSprite
+  hgevector.h	    Заголовок класса hgeVector
+<b>lib\		  Библиотеки импорта HGE</b>
+  <b>bc\</b>		    Библиотеки для Borland C++/C++ Builder
+    hge.lib	      Библиотека системного слоя HGE
+    hgehelp.lib	      Библиотека вспомогательных классов HGE
+  <b>gcc\</b>		    Библиотеки для MinGW/Dev-C++
+    hge.a		      Библиотека системного слоя HGE
+    hgehelp.a	      Библиотека вспомогательных классов HGE
+  <b>vc\</b>		    Библиотеки для VC++/Intel C++/Codewarrior
+    hge.lib	      Библиотека системного слоя HGE
+    hgehelp.lib	      Библиотека вспомогательных классов HGE
+<b>tools\		  Инструменты HGE</b>
+  <b>particleed\</b>	    Редактор систем частиц HGE
+    hge.dll	      DLL библиотеки HGE 1.53
+    particle1.psi	      Начальная установка #1
+    particle2.psi	      Начальная установка #2
+    particle3.psi	      Начальная установка #3
+    particle4.psi	      Начальная установка #4
+    particle5.psi	      Начальная установка #5
+    particle6.psi	      Начальная установка #6
+    particle7.psi	      Начальная установка #7
+    particle8.psi	      Начальная установка #8
+    particle9.psi	      Начальная установка #9
+    particleed.exe	      Бинарий редактора систем частиц
+    particleed.ini	      Инициализационный файл редактора систем частиц
+    particleed.paq	      Ресурс файл редактора систем частиц
+    particles.png	      Текстуры частиц
+    readme.txt	      Краткое описание редактора систем частиц
+<b>tutorials\	  Коды примеров HGE</b>
+  <b>precompiled\</b>	    Скомпилированные примеры и медиа-файлы
+    hge_tut01.exe	      Скомпилированный пример 01
+    hge_tut02.exe	      Скомпилированный пример 02
+    hge_tut03.exe	      Скомпилированный пример 03
+    hge_tut04.exe	      Скомпилированный пример 04
+    hge_tut05.exe	      Скомпилированный пример 05
+    hge_tut06.exe	      Скомпилированный пример 06
+    hge_tut07.exe	      Скомпилированный пример 07
+    hge_tut08.exe	      Скомпилированный пример 08
+    hge.dll	      DLL библиотеки HGE 1.53
+    bass.dll	      DLL библиотеки BASS 2.1
+    bg.png	      Тайл заднего фона 1
+    bg2.png	      Тайл заднего фона 2
+    cursor.png	      Изображение курсора мыши
+    font1.fnt	      Файл описания шрифта 1
+    font1.png	      Растровое изображение шрифта 1
+    font2.fnt	      Файл описания шрифта 2
+    font2.png	      Растровое изображение шрифта 2
+    objects.png	      Спрайты астрономических тел
+    particles.png	      Набор спрайтов частиц
+    zazaka.png	      Спрайт розового зайца
+    texture.jpg	      Изображение для демонстрации искажений
+    trail.psi	      Настройки системы частиц
+    menu.wav	      Звуковой эффект
+  <b>tutorial01\</b>	    Пример 01 - Минимальное HGE приложение
+    hge_tut01.cpp	      Исходный код
+    hge_tut01.dsp	      Файл проекта VC6
+    hge_tut01.dsw	      VC6 Workspace
+  <b>tutorial02\</b>	    Пример 02 - Ввод, звук и рендеринг
+    hge_tut02.cpp	      Исходный код
+    hge_tut02.dsp	      Файл проекта VC6
+    hge_tut02.dsw	      VC6 Workspace
+  <b>tutorial03\</b>	    Пример 03 - Использование вспомогательных классов
+    hge_tut03.cpp	      Исходный код
+    hge_tut03.dsp	      Файл проекта VC6
+    hge_tut03.dsw	      VC6 Workspace
+  <b>tutorial04\</b>	    Пример 04 - Использование целей отображения
+    hge_tut04.cpp	      Исходный код
+    hge_tut04.dsp	      Файл проекта VC6
+    hge_tut04.dsw	      VC6 Workspace
+  <b>tutorial05\</b>	    Пример 05 - Использование сетки искажения
+    hge_tut05.cpp	      Исходный код
+    hge_tut05.dsp	      Файл проекта VC6
+    hge_tut05.dsw	      VC6 Workspace
+  <b>tutorial06\</b>	    Пример 06 - Создание меню
+    hge_tut06.cpp	      Исходный код
+    hge_tut06.dsp	      Файл проекта VC6
+    hge_tut06.dsw	      VC6 Workspace
+    menuitem.cpp	      Реализация нестандартного элементов управления
+    menuitem.h	      Заголовок нестандартного элемента управления
+  <b>tutorial07\</b>	    Пример 07 - Тысячи зайцев
+    hge_tut07.cpp	      Исходный код
+    hge_tut07.dsp	      Файл проекта VC6
+    hge_tut07.dsw	      VC6 Workspace
+  <b>tutorial08\</b>	    Пример 08 - Полный штиль
+    hge_tut08.cpp	      Исходный код
+    hge_tut08.dsp	      Файл проекта VC6
+    hge_tut08.dsw	      VC6 Workspace
+</pre>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

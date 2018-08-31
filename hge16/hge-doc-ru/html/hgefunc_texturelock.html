@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Texture_Lock</h1>
+<p>
+Захватывает текстуру для прямого доступа.
+</p>
+<pre>
+DWORD *Texture_Lock(
+  HTEXTURE <i><b>texture</b></i>,
+  bool <i><b>bReadOnly</b></i> = true,
+  int <i><b>left</b></i> = 0,
+  int <i><b>top</b></i> = 0,
+  int <i><b>width</b></i> = 0,
+  int <i><b>height</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>texture</i>
+<dd>Идентификатор текстуры, которую необходимо захватить.
+<dt><i>bReadOnly</i>
+<dd>Необязательный параметр. Если равен <b>true</b>, текстура не будет обновлена после освобождения.
+<dt><i>left</i>
+<dd>Необязательный параметр, X-координата верхнего левого угла области текстуры, которую надо 
+захватить.
+<dt><i>top</i>
+<dd>Необязательный параметр, Y-координата верхнего левого угла области текстуры, которую надо
+захватить.
+<dt><i>width</i>
+<dd>Необязательный параметр, ширина области текстуры, которую надо захватить.
+<dt><i>height</i>
+<dd>Необязательный параметр, высота области текстуры, которую надо захватить.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+В случае успеха, возвращается указатель на захваченные данные текстуры. В противном случае 0.
+</p>
+<h2>Примечания</h2>
+<p>
+Данные захваченной текстуры - массив типа <b>DWORD</b> <a href="hgedata_hwcolor.html">значений цвета</a>.
+Захватить можно только 32-битную текстуру, так что захват не работает на некоторых очень старых 
+видоекартах, таких как <b>Intel Solano</b>. Цели рендеринга и сжатые текстуры также не могут быть 
+захвачены.
+<br><br>
+Если была указана область текстуры, полученный указатель сдвинут соответствующим образом от начала 
+данных текстуры. Чтобы обратиться к указанной области используйте следующий синтаксис:
+</p>
+<pre>DWORD color = locked_ptr[y*tex_width+x];</pre>
+<p>
+Где <b>tex_width</b> ширина текстуры, которую можно узнать вызывая функцию <a href="hgefunc_texturegetwidth.html">Texture_GetWidth</a>.
+<br><br>
+Если вы не собираетесь изменять текстуру, а просто собираетесь прочитать значения нескольких 
+пикселей - всегда утанавливайте <b>bReadOnly</b> в <b>true</b>, это позволит опустить обновление 
+текстуры в видеопамяти, и будет работать быстрее. Также, если вы изменяете только часть текстуры, 
+всегда указывайте область. Тогда только указанная область будте обнавлена в видеопамяти.
+<br><br>
+Когда обращение к текстуре закончено, необходимо освободить ее используя вызов функции <a href="hgefunc_textureunlock.html">Texture_Unlock</a>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_textureunlock.html">Texture_Unlock</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

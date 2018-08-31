@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_peditor.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Использование пресетов Редактора Систем Частиц в играх</h1>
+<p>
+<b>Р</b>едактор сохраняет свои пресеты в файлы <b>particle1.psi</b> - <b>particle9.psi</b>,
+которые могут быть загружены прямо в вашу игру. Здесь представлено детальное объяснение, как их использовать.
+</p>
+<h2>Инициализация, самый простой подход</h2>
+<p>
+Используйте этот метод, если вам просто надо получить параметры из пресета и спрайт для отображение 
+частиц уже готов:
+</p>
+<pre>
+hgeParticleSystem *ps;
+ps = new hgeParticleSystem("particle1.psi", sprite, 50);
+</pre>
+<p>
+Вуаля! Система частиц готова к запуску!
+<br><br>
+Последний параметр конструктора <a href="hgeparticle__main.html">hgeParticleSystem</a> - частота 
+кадров, с которой система должна обновляться. Система частиц использует нелинейные функции движения, 
+поэтому ее внешний вид может изменяться, в зависимости от частоты. Этот метод позволяет сохранять их 
+постоянными при любой частоте.
+</p>
+<h2>Инициализация, не самый простой путь</h2>
+<p>
+Используйте этот метод, если хотите воссоздать в точности такую же систему, какая была в редакторе, 
+используя только информацию из пресета.
+<br><br>
+Сначала надо загрузить пресет системы частиц и текстуру, не обращаясь пока к изображению частицы:
+</p>
+<pre>
+HTEXTURE tex = hge->Texture_Load("particles.png");
+hgeParticleSystemInfo *psi =
+          hge->Resource_Load("particle1.psi");
+</pre>
+<p>
+Теперь нужно создать спрайтовый объект и настроить его. Можно использовать любой спрайт, который 
+у вас есть, но если вы хотите использовать параметры спрайта, установленные в редакторе, он 
+сохранены в поле <b>sprite</b> структуы <a href="hgeparticle_psinfo.html">hgeParticleSystemInfo</a> 
+следующим образом: старшее <b>WORD</b> содержит режим смешивания, и младшее <b>WORD</b> содержит 
+номер спрайта от 0 до 15. Чтобы получить эти значения, используйте следующий код:
+</p>
+<pre>
+int nSprite = ((DWORD)psi->sprite & 0xFFFF);
+int blend = ((DWORD)psi->sprite >> 16);
+</pre>
+<p>
+Итак, давайте теперь создадим спрайт и запишем действительный указатель на него в пресет:
+</p>
+<pre>
+#define SIZE 32
+
+// calculate the texx and texy texture coordinates here
+// based on editor's sprite number or in any other way you want
+float texx = SIZE * (nSprite % 4);
+float texy = SIZE * (nSprite / 4);
+
+hgeSprite *spr = new hgeSprite(tex, texx, texy, SIZE, SIZE);
+spr->SetHotSpot(SIZE/2, SIZE/2);
+spr->SetBlendMode(blend);
+psi->sprite = spr;
+</pre>
+<p>
+Если вы хотите использовать спрайт с други разрешением нежели 32x32,
+необходимо настроить параметры <b>fSizeStart</b> and <b>fSizeEnd</b> в пресете, чтобы оставить такие 
+же значения размеров частиц, какие они были в пресете редактора:
+</p>
+<pre>
+psi->fSizeStart = 32.0f * psi->fSizeStart / SIZE;
+psi->fSizeEnd = 32.0f * psi->fSizeEnd / SIZE;
+</pre>
+<p>
+И, наконец, давайте создадим объект системы частиц и удалим пресет из памяти, так как он нам больше 
+не понадобится:
+</p>
+<pre>
+hgeParticleSystem *ps = new hgeParticleSystem(psi, 50);
+hge->Resource_Free(psi);
+</pre>
+<p>
+Теперь система частиц проинициализирована и готова к запуску!
+<br><br>
+Можете сохранить пресет в памяти и использовать его в дальнейшем для создания других экземпляров 
+этой системы частиц, вручную или с помощью <a href="hgepmanager__main.html">hgeParticleManager</a>.
+</p>
+<h2>Запуск</h2>
+<p>
+Теперь сделаем вызов метода <a href="hgeparticle_fireat.html">FireAt</a> объекта класса
+<a href="hgeparticle__main.html">hgeParticleSystem</a>, чтобы стартовать систему частиц:
+</p>
+<pre>
+ps->FireAt(100, 100);
+</pre>
+<p>
+Затем используем методы <a href="hgeparticle_update.html">Update</a>
+и <a href="hgeparticle_render.html">Render</a> в своей функции кадра, чтобы обновлять и отрисовывать 
+соответсвенно систему частиц:
+</p>
+<pre>
+ps->Update(fDeltaTime);
+ps->Render();
+</pre>
+<p>
+Так же можно контролировать систему частиц с помощью методов <a href="hgeparticle_stop.html">Stop</a>
+и <a href="hgeparticle_moveto.html">MoveTo</a>, или изменяя параметры структуры ее
+ <a href="hgeparticle_datamembers.html">info</a> вручную.
+</p>
+<h2>Очистка</h2>
+<p>
+Когда система частиц больше не нужна, систему и все ассоциированные с ней ресуры необходимо удалить:
+</p>
+<pre>
+delete ps;
+delete spr;
+hge->Texture_Free(tex);
+</pre>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgesprite__main.html">hgeSprite</a>,
+<a href="hgeparticle__main.html">hgeParticleSystem</a>,
+<a href="hgepmanager__main.html">hgeParticleManager</a>,
+<a href="tutorials_tut03.html">Пример 03</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

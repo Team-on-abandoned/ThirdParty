@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeanim.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">hgeAnimation::Play</h1>
+<p>
+Начинает воспроизведение анимации.
+</p>
+<pre>
+void Play();
+</pre>
+<h2>Примечания</h2>
+<p>
+Если анимация уже воспроизводится, <b>Play</b> начинает воспроизведение с начала.
+</p>
+<p>
+Чтобы обновить внутренний таймер и продолжить воспроизведение, необходимо вызвать метод <a href="hgeanim_update.html">Update</a> 
+в функции кадра.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeanim.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgeanim_stop.html">Stop</a>,
+<a href="hgeanim_resume.html">Resume</a>,
+<a href="hgeanim_update.html">Update</a>,
+<a href="hgeanim_setmode.html">SetMode</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

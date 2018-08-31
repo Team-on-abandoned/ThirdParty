@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgesprite.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">hgeSprite::SetZ</h1>
+<p>
+Устанавиливает Z-глубину для указанных вершин или для всего спрайта.
+</p>
+<pre>
+void SetZ(
+  float <i><b>z</b></i>,
+  int <i><b>i</b></i> = -1
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>z</i>
+<dd>Значение Z-глубина в от 0.0 до 1.0.
+<dt><i>i</i>
+<dd>Необязательный индекс вершины спрайта. Вершины проиндексированы по часовой стрелке, начиная от 
+левой верхней и пронумированы 0-3. Если параметр опущен, установится Z-глубина первой вершины. Если 
+равно -1 или опущено, то будут изменены все четыре вершины спрайта.
+</dl>
+<h2>Примечания</h2>
+<p>
+Если Z-буффер не используется, то величина Z-глубины игнорируется.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgesprite.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgesprite_getz.html">GetZ</a>,
+<a href="hgeconst_systemstate.html#HGE_ZBUFFER">HGE_ZBUFFER</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

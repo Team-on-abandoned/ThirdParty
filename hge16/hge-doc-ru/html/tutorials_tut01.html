@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_tutorials.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Пример 01 - Минимальное HGE приложение</h1>
+<p>
+<b>С</b>начала, мы добавляем заголовок <b>hge.h</b> и объявляем переменную для хранения указателя на 
+интерфейс <b>HGE</b>:
+</p>
+<pre>
+#include &lt;hge.h&gt;
+
+HGE *hge = 0;
+</pre>
+<p>
+Затем создаем функцию кадра. Функция кадра - это пользовательская функция, которую будет вызывать <b>HGE</b> 
+один раз на кадр: поместим сюда код цикла игры. Когда функция кадра возвращает <b>true</b>, <b>HGE</b> 
+останавливает выполнение игрового цикла.
+<br><br>
+В этом примере мы просто проверяем нажата ли клавиша ESC:
+</p>
+<pre>
+bool FrameFunc()
+{
+  if (hge->Input_GetKeyState(HGEK_ESCAPE)) return true;
+  return false;
+}
+</pre>
+<p>
+Функция <b>WinMain</b> - стандартная точка входа в приложение windows.
+Здесь мы получим указатель на интерфейс <b>HGE</b> для доступа к функциям <b>HGE</b> functions.
+В этом примере мы используем глобальную переменную, для указателя на интерфейс <b>HGE</b>.
+Взамен этого вы можете вызывать функцию <a href="hgefunc_interfaceget.html">hgeCreate</a> каждый раз 
+в момент ображеня к <b>HGE</b>. Только нужно следить за соответсвующим вызовом функции <a href="hgefunc_interfacerelease.html">Release</a>
+на каждый вызов <a href="hgefunc_interfaceget.html">hgeCreate</a>.
+</p>
+<pre>
+int WINAPI WinMain(HINSTANCE, HINSTANCE, LPSTR, int)
+{
+  hge = hgeCreate(HGE_VERSION);
+</pre>
+<p>
+Затем мы устанавливаем некоторые внтуренние переменные <b>HGE</b> чтобы настроить требуемое окружение.
+Хотя большинство переменных системы имеют соответствующие значения по умолчанию, как мимниму 
+переменная <a href="hgeconst_systemstate.html#HGE_FRAMEFUNC">HGE_FRAMEFUNC</a> должна быть 
+установлена перед вызовом <a href="hgefunc_systemstart.html">System_Start</a>.
+</p>
+<pre>
+  hge->System_SetState(HGE_FRAMEFUNC, FrameFunc);
+  hge->System_SetState(HGE_WINDOWED, true);
+  hge->System_SetState(HGE_USESOUND, false);
+  hge->System_SetState(HGE_TITLE,
+                 "HGE Tutorial 01 - Minimal HGE application");
+</pre>
+<p>
+Теперь мы инициализируем <b>HGE</b> с установленными параметрами.
+Если что-то пойдет не так, функция <a href="hgefunc_systeminitiate.html">System_Initiate</a>
+вернет <b>false</b> и более подробное описание того, что произошло можно узнать вызвав функцию 
+<a href="hgefunc_systemgeterror.html">System_GetErrorMessage</a>.
+<br><br>
+Настроив <b>HGE</b>, мы запускаем игровой цикл вызовом функции <a href="hgefunc_systemstart.html">System_Start</a>.
+Выполнение "останавливается" здесь, когда функция кадра вернет значение <b>true</b>.
+</p>
+<pre>
+  if(hge->System_Initiate())
+  {
+    hge->System_Start();
+  }
+  else
+  {
+    MessageBox(NULL, hge->System_GetErrorMessage(), "Error",
+               MB_OK | MB_ICONERROR | MB_SYSTEMMODAL);
+  }
+</pre>
+<p>
+Теперь была нажата <b>ESC</b> или же пользователь закрыл окно приложения. Необходимо восстановить 
+видео режим и освободить все выделенные ресурсы.
+Также нужно освободить интерфейс <b>HGE</b>:
+</p>
+<pre>
+  hge->System_Shutdown();
+  hge->Release();
+
+  return 0;
+}
+</pre>
+<p>
+Вуаля! Всего 20 строк кода и у нас полнофункциональная и работающая заготовка для игры.
+<br><br>
+Полный исходны код с детальными комментариями для этого примера можно найти в директории <b>tutorials\tutorial01</b>.
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

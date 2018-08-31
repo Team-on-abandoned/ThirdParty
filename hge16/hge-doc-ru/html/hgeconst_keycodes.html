@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeconst.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Виртуальные коды клавиш в HGE</h1>
+<p>
+В <b>HGE</b> виртуальные коды клавиш используются с <a href="hgefunc_inputgetkeystate.html">Input_GetKeyState</a>,
+<a href="hgefunc_inputgetkey.html">Input_Get</a> и другими функциями работы с вводом, для 
+определения одной из клавиш клавиатуры или кнопки мыши.
+Они объявлены в заголовке <b>hge.h</b>:
+<br><br>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr><td width=30%><b>HGEK_LBUTTON</b></td><td>Левая кнопка мыши</td></tr>
+<tr><td><b>HGEK_RBUTTON</b></td><td>Правая кнопка мыши</td></tr>
+<tr><td><b>HGEK_MBUTTON</b></td><td>Средняя кнопка мыши (кнопка колесика)</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_ESCAPE</b></td><td>Клавиша ESCAPE</td></tr>
+<tr><td><b>HGEK_BACKSPACE</b></td><td>Клавиша BACKSPACE</td></tr>
+<tr><td><b>HGEK_TAB</b></td><td>Клавиша TAB</td></tr>
+<tr><td><b>HGEK_ENTER</b></td><td>Любая из двух клавиш ENTER</td></tr>
+<tr><td><b>HGEK_SPACE</b></td><td>Клавиша SPACE</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_SHIFT</b></td><td>Любая из двух клавиш SHIFT</td></tr>
+<tr><td><b>HGEK_CTRL</b></td><td>Любая из двух клавиш CTRL</td></tr>
+<tr><td><b>HGEK_ALT</b></td><td>Любая из двух клавиш ALT</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_LWIN</b></td><td>Клавиша Left WINDOWS</td></tr>
+<tr><td><b>HGEK_RWIN</b></td><td>Клавиша Right WINDOWS</td></tr>
+<tr><td><b>HGEK_APPS</b></td><td>Клавиша APPLICATIONS</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_PAUSE</b></td><td>Клавиша PAUSE</td></tr>
+<tr><td><b>HGEK_CAPSLOCK</b></td><td>Клавиша CAPS LOCK</td></tr>
+<tr><td><b>HGEK_NUMLOCK</b></td><td>Клавиша NUM LOCK</td></tr>
+<tr><td><b>HGEK_SCROLLLOCK</b></td><td>Клавиша SCROLL LOCK</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_PGUP</b></td><td>Клавиша PAGE UP</td></tr>
+<tr><td><b>HGEK_PGDN</b></td><td>Клавиша PAGE DOWN</td></tr>
+<tr><td><b>HGEK_HOME</b></td><td>Клавиша HOME</td></tr>
+<tr><td><b>HGEK_END</b></td><td>Клавиша END</td></tr>
+<tr><td><b>HGEK_INSERT</b></td><td>Клавиша INSERT</td></tr>
+<tr><td><b>HGEK_DELETE</b></td><td>Клавиша DELETE</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_LEFT</b></td><td>Клавиша Стрелка Влево</td></tr>
+<tr><td><b>HGEK_UP</b></td><td>Клавиша Стрелка Вверх</td></tr>
+<tr><td><b>HGEK_RIGHT</b></td><td>Клавиша Стрелка Вправо</td></tr>
+<tr><td><b>HGEK_DOWN</b></td><td>Клавиша Стрелка Вниз</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_0</b></td><td>Клавиша '0' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_1</b></td><td>Клавиша '1' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_2</b></td><td>Клавиша '2' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_3</b></td><td>Клавиша '3' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_4</b></td><td>Клавиша '4' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_5</b></td><td>Клавиша '5' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_6</b></td><td>Клавиша '6' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_7</b></td><td>Клавиша '7' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_8</b></td><td>Клавиша '8' на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_9</b></td><td>Клавиша '9' на основной клавиатуре</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_A</b></td><td>'A' </td></tr>
+<tr><td><b>HGEK_B</b></td><td>'B' </td></tr>
+<tr><td><b>HGEK_C</b></td><td>'C' </td></tr>
+<tr><td><b>HGEK_D</b></td><td>'D' </td></tr>
+<tr><td><b>HGEK_E</b></td><td>'E' </td></tr>
+<tr><td><b>HGEK_F</b></td><td>'F' </td></tr>
+<tr><td><b>HGEK_G</b></td><td>'G' </td></tr>
+<tr><td><b>HGEK_H</b></td><td>'H' </td></tr>
+<tr><td><b>HGEK_I</b></td><td>'I' </td></tr>
+<tr><td><b>HGEK_J</b></td><td>'J' </td></tr>
+<tr><td><b>HGEK_K</b></td><td>'K' </td></tr>
+<tr><td><b>HGEK_L</b></td><td>'L' </td></tr>
+<tr><td><b>HGEK_M</b></td><td>'M' </td></tr>
+<tr><td><b>HGEK_N</b></td><td>'N' </td></tr>
+<tr><td><b>HGEK_O</b></td><td>'O' </td></tr>
+<tr><td><b>HGEK_P</b></td><td>'P' </td></tr>
+<tr><td><b>HGEK_Q</b></td><td>'Q' </td></tr>
+<tr><td><b>HGEK_R</b></td><td>'R' </td></tr>
+<tr><td><b>HGEK_S</b></td><td>'S' </td></tr>
+<tr><td><b>HGEK_T</b></td><td>'T' </td></tr>
+<tr><td><b>HGEK_U</b></td><td>'U' </td></tr>
+<tr><td><b>HGEK_V</b></td><td>'V' </td></tr>
+<tr><td><b>HGEK_W</b></td><td>'W' </td></tr>
+<tr><td><b>HGEK_X</b></td><td>'X' </td></tr>
+<tr><td><b>HGEK_Y</b></td><td>'Y' </td></tr>
+<tr><td><b>HGEK_Z</b></td><td>'Z' </td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_GRAVE</b></td><td>Клавиша Косая Черта (`)</td></tr>
+<tr><td><b>HGEK_MINUS</b></td><td>Клавиша Минус (-) на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_EQUALS</b></td><td>Клавиша Равно (=)на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_BACKSLASH</b></td><td>Клавиша Обратный Косая Черта (\)</td></tr>
+<tr><td><b>HGEK_LBRACKET</b></td><td>Клавиша Левая Квадратная Скобка ([)</td></tr>
+<tr><td><b>HGEK_RBRACKET</b></td><td>Клавиша Правая Квадратная Скобка (])</td></tr>
+<tr><td><b>HGEK_SEMICOLON</b></td><td>Клавиша Точка с запятой (;)</td></tr>
+<tr><td><b>HGEK_APOSTROPHE</b></td><td>Клавиша Апостроф (')</td></tr>
+<tr><td><b>HGEK_COMMA</b></td><td>Клавиша Запятая (,)</td></tr>
+<tr><td><b>HGEK_PERIOD</b></td><td>Клавиша Точка (.) на основной клавиатуре</td></tr>
+<tr><td><b>HGEK_SLASH</b></td><td>Клавиша Прямая Косая Черта (/) на основной клавиатуре</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_NUMPAD0</b></td><td>Клавиша '0' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD1</b></td><td>Клавиша '1' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD2</b></td><td>Клавиша '2' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD3</b></td><td>Клавиша '3' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD4</b></td><td>Клавиша '4' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD5</b></td><td>Клавиша '5' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD6</b></td><td>Клавиша '6' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD7</b></td><td>Клавиша '7' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD8</b></td><td>Клавиша '8' на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_NUMPAD9</b></td><td>Клавиша '9' на цифровой клавиатуре</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_MULTIPLY</b></td><td>Клавиша Умножить (*) на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_DIVIDE</b></td><td>Клавиша Разделить (/) на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_ADD</b></td><td>Клавиша Сложить (+) на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_SUBTRACT</b></td><td>Клавиша Вычесть (-) на цифровой клавиатуре</td></tr>
+<tr><td><b>HGEK_DECIMAL</b></td><td>Клавиша Десятичная Точка (.) на цифровой клавиатуре</td></tr>
+<tr><td colspan=2>&nbsp;</td></tr>
+<tr><td><b>HGEK_F1</b></td><td>F1 </td></tr>
+<tr><td><b>HGEK_F2</b></td><td>F2 </td></tr>
+<tr><td><b>HGEK_F3</b></td><td>F3 </td></tr>
+<tr><td><b>HGEK_F4</b></td><td>F4 </td></tr>
+<tr><td><b>HGEK_F5</b></td><td>F5 </td></tr>
+<tr><td><b>HGEK_F6</b></td><td>F6 </td></tr>
+<tr><td><b>HGEK_F7</b></td><td>F7 </td></tr>
+<tr><td><b>HGEK_F8</b></td><td>F8 </td></tr>
+<tr><td><b>HGEK_F9</b></td><td>F9 </td></tr>
+<tr><td><b>HGEK_F10</b></td><td>F10 </td></tr>
+<tr><td><b>HGEK_F11</b></td><td>F11 </td></tr>
+<tr><td><b>HGEK_F12</b></td><td>F12 </td></tr>
+</table>
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_inputgetkeyname.html">Input_GetKeyName</a>,
+<a href="hgefunc_inputgetkeystate.html">Input_GetKeyState</a>,
+<a href="hgefunc_inputgetkey.html">Input_Get</a>,
+<a href="hgefunc_inputgetevent.html">Input_GetEvent</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

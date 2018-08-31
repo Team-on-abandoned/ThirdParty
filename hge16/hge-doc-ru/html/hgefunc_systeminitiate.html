@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::System_Initiate</h1>
+<p>
+Инициализирует всю аппаратную и программную часть, необходимую для запуска движка и создает окно 
+приложения.
+</p>
+<pre>
+bool System_Initiate();
+</pre>
+<h2>Возвращаемое значение</h2>
+<p>
+В случае успеха возвращает <b>true</b>. В противном случае <b>false</b>.
+</p>
+<h2>Примечания</h2>
+<p>
+Перед вызовом этой функуии, установить необходимые переменные системы с помощью вызова <a href="hgefunc_systemsetstate.html">System_SetState</a>.
+И хотя большинство из них имеют значения по умолчанию и/или могут быть изменены позднее, хотябы
+ <a href="hgeconst_systemstate.html#HGE_FRAMEFUNC">HGE_FRAMEFUNC</a> должно быть установлено.
+<br><br>
+Функции <b>Timer_*</b>, <b>Effect_*</b>, <b>Music_*</b>, <b>Stream_*</b>, <b>Channel_*</b>, <b>Input_*</b>,
+<b>Gfx_*</b>, <b>Target_*</b> and <b>Texture_*</b> недоступны, пока система не проинициализирована. 
+Все остальные функции <b>HGE</b> могут быть использованы в любое время.
+<br><br>
+Если функция завершилась неудачно, можно запросить сообщение об ошибке с помощью вызова функции 
+<a href="hgefunc_systemgeterror.html">System_GetErrorMessage</a>. Также, если была установлена 
+переменная <a href="hgeconst_systemstate.html#HGE_LOGFILE">HGE_LOGFILE</a>, то сообщение об ошибке
+попадет в файл протокола.
+<br><br>
+Перед тем, как программ завершитася, необходимо вызвать функцию <a href="hgefunc_systemshutdown.html">System_Shutdown</a> 
+чтобы восстановить видеорежим и освободить все выделенные ресурсы.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_systemsetstate.html">System_SetState</a>,
+<a href="hgefunc_systemgeterror.html">System_GetErrorMessage</a>,
+<a href="hgefunc_systemshutdown.html">System_Shutdown</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

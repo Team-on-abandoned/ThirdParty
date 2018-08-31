@@ -1,0 +1,408 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="switchContents('cnt_main.html','cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Функции HGE</h1>
+<p>
+<b>З</b>десь вы найдете описание всех функций системного слоя <b>HGE</b>:
+</p>
+<h2>Интерфейсные функции</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_interfaceget.html">hgeCreate</a></td>
+<td>Возвращает указатель на интерфейс <b>HGE</b>.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_interfacerelease.html">Release</a></td>
+<td>Освобождает полученный интерфейс <b>HGE</b>.</td>
+</tr>
+</table>
+</p>
+<h2>Системные функции</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_systeminitiate.html">System_Initiate</a></td>
+<td>Инициализирует аппаратную и программную часть, необходимую для работы движка.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemshutdown.html">System_Shutdown</a></td>
+<td>Восстанавливает видеорежим и освобождает выделенные ресурсы.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemstart.html">System_Start</a></td>
+<td>Начинает выполнять определенную пользователем функцию кадра.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemsetstate.html">System_SetState</a></td>
+<td>Устанавливает внутреннюю переменную системы.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemgetstate.html">System_GetState</a></td>
+<td>Возвращает внутреннюю переменную системы.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemgeterror.html">System_GetErrorMessage</a></td>
+<td>Возвращает описание последней произошедшей в <b>HGE</b> ошибки.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemlog.html">System_Log</a></td>
+<td>Записывает в файл протокола форматированное сообщение.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemlaunch.html">System_Launch</a></td>
+<td>Открывает URL или запускает внешний исполняемый/дата файл.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_systemsnapshot.html">System_Snapshot</a></td>
+<td>Сохраняет снимок текущего экрана в файл.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с ресурсами</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_resourceload.html">Resource_Load</a></td>
+<td>Загружает ресурс с диска в память.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourcefree.html">Resource_Free</a></td>
+<td>Удаляет загруженный ресурс из памяти.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourceattachpack.html">Resource_AttachPack</a></td>
+<td>Присоединяет архив ресурсов.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourceremovepack.html">Resource_RemovePack</a></td>
+<td>Отсоединяет архив ресурсов.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourceremoveallpacks.html">Resource_RemoveAllPacks</a></td>
+<td>Отсоединяет все ранее присоединенные архивы ресурсов.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourcemakepath.html">Resource_MakePath</a></td>
+<td>Строит абсолютный путь к файлу.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourceenumfiles.html">Resource_EnumFiles</a></td>
+<td>Перечисляет все файлы по заданному шаблону.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_resourceenumfolders.html">Resource_EnumFolders</a></td>
+<td>Перечисляет все директории по заданному шаблону.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с файлами инициализации</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_inisetint.html">Ini_SetInt</a></td>
+<td>Записывает целое значение в файл инициализации.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inigetint.html">Ini_GetInt</a></td>
+<td>Читает целое значение из файла инициализации.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inisetfloat.html">Ini_SetFloat</a></td>
+<td>Записывает значение с плавающей запятой в файл инициализации.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inigetfloat.html">Ini_GetFloat</a></td>
+<td>Читает значение с плавающей запятой из файла инициализации.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inisetstring.html">Ini_SetString</a></td>
+<td>Записывает строку в файл инициализации</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inigetstring.html">Ini_GetString</a></td>
+<td>Читает строку из файла инициализации</td>
+</tr>
+</table>
+</p>
+<h2>Функции генерации случайных чисел</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_randomseed.html">Random_Seed</a></td>
+<td>Устанавливает начальное значение для генератора случайных чисел.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_randomint.html">Random_Int</a></td>
+<td>Генерирует случайное число типа <b>int</b>.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_randomfloat.html">Random_Float</a></td>
+<td>Генерирует случайное число типа <b>float</b>.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с таймером</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_timergettime.html">Timer_GetTime</a></td>
+<td>Возвращает время, прошедшее после вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.</td>
+</tr>
+<tr>
+<td width=33%><a href="hgefunc_timergetdelta.html">Timer_GetDelta</a></td>
+<td>Возвращает время, прошедшее с последнего вызова функции кадра.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_timergetfps.html">Timer_GetFPS</a></td>
+<td>Возвращает текущий FPS.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы со звуковыми эффектами</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_effectload.html">Effect_Load</a></td>
+<td>Загружает звуковой эффект с диска в память.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_effectfree.html">Effect_Free</a></td>
+<td>Удаляет загруженный эффект и ассоциированный с ним ресурс.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_effectplay.html">Effect_Play</a></td>
+<td>Начинает воспроизводить звуковой эффект.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_effectplayex.html">Effect_PlayEx</a></td>
+<td>Начинает воспроизводить звуковой эффект с заданными параметрами воспроизведения.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с музыкой</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_musicload.html">Music_Load</a></td>
+<td>Загружает с диска музыку в память.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_musicfree.html">Music_Free</a></td>
+<td>Удаляет загруженную музыку и ассоциированный с ней ресурс.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_musicplay.html">Music_Play</a></td>
+<td>Начинает воспроизведение музыки.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы со сжатыми звуковыми потоками</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_streamload.html">Stream_Load</a></td>
+<td>Загружает поток с диска в память.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_streamfree.html">Stream_Free</a></td>
+<td>Удаляет загруженный поток и ассоциированный с ним ресурс.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_streamplay.html">Stream_Play</a></td>
+<td>Начинает воспроизводить поток.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с аудио каналами</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_channelsetpanning.html">Channel_SetPanning</a></td>
+<td>Изменяет значения панорамирования.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelsetvolume.html">Channel_SetVolume</a></td>
+<td>Изменяет громкость звукового канала.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelsetpitch.html">Channel_SetPitch</a></td>
+<td>Изменяет высоту звукового канала.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelpause.html">Channel_Pause</a></td>
+<td>Приостанавливает воспроизведение в звуковом канале.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelresume.html">Channel_Resume</a></td>
+<td>Возобнавляет воспроизведение в звуковом канале.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelstop.html">Channel_Stop</a></td>
+<td>Останавливает воспроизведение в звуковом канале.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelstopall.html">Channel_StopAll</a></td>
+<td>Останавливает воспроизведение во всех активных каналах.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_channelisplaying.html">Channel_IsPlaying</a></td>
+<td>Определяет, активный ли звуковой канал.</td>
+</tr>
+</table>
+</p>
+<h2>Функуции работы с устройствами ввода</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_inputgetmousepos.html">Input_GetMousePos</a></td>
+<td>Возвращает текущую позицию курсора мыши.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputsetmousepos.html">Input_SetMousePos</a></td>
+<td>Устанавливает позицию курсора мыши.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputgetmousewheel.html">Input_GetMouseWheel</a></td>
+<td>Возвращает на сколько прокрутилось колесо мыши с последнего вызова функции кадра.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputgetkeyname.html">Input_GetKeyName</a></td>
+<td>Возвращает название клавиши или кнопки мыши по ее коду.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputgetkeystate.html">Input_GetKeyState</a></td>
+<td>Проверяет, не нажатали клавиша или кнопка мыши.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputgetkey.html">Input_GetKey</a></td>
+<td>Возвращает код последней нажатой клавиши.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputgetchar.html">Input_GetChar</a></td>
+<td>Возвращает последний нажатый символ.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_inputgetevent.html">Input_GetEvent</a></td>
+<td>Берет следующее событие ввода из очереди.</td>
+</tr>
+</table>
+</p>
+<h2>Графические функции</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a></td>
+<td>Начинает вывод графики.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxendscene.html">Gfx_EndScene</a></td>
+<td>Заканчивает вывод графики и отображает буфер на экране.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxclear.html">Gfx_Clear</a></td>
+<td>Очищает цель вывода и z-буфер.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxrenderline.html">Gfx_RenderLine</a></td>
+<td>Отображает линию.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxrendertriple.html">Gfx_RenderTriple</a></td>
+<td>Отображает треугольник.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxrenderquad.html">Gfx_RenderQuad</a></td>
+<td>Отображает четырехугольник.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxstartbatch.html">Gfx_StartBatch</a></td>
+<td>Начинает отображать последовательность примитивов.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxfinishbatch.html">Gfx_FinishBatch</a></td>
+<td>Заканчивает отображение последовательности примитивов.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxsetclipping.html">Gfx_SetClipping</a></td>
+<td>Задает регион отсечения.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_gfxsettransform.html">Gfx_SetTransform</a></td>
+<td>Задает трансформацию всей сцены.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с целями отрисовки</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_targetcreate.html">Target_Create</a></td>
+<td>Создает цель рендеринга.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_targetfree.html">Target_Free</a></td>
+<td>Удаляет цель рендеринга и ресурс ассоциированный с ней.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_targetgettexture.html">Target_GetTexture</a></td>
+<td>Возварщает идентификатор текстуры цели рендеринга.</td>
+</tr>
+</table>
+</p>
+<h2>Функции работы с текстурами</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=33%><a href="hgefunc_texturecreate.html">Texture_Create</a></td>
+<td>Создает пустую текстуру.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_textureload.html">Texture_Load</a></td>
+<td>Загружает текстуру с диска или из памяти.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_texturefree.html">Texture_Free</a></td>
+<td>Удаляет текстуру и ассоциированный с ней ресурс.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_texturegetwidth.html">Texture_GetWidth</a></td>
+<td>Возвращает длину текстуры в пикселях.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_texturegetheight.html">Texture_GetHeight</a></td>
+<td>Возвращает высоту текстуры в пикселях.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_texturelock.html">Texture_Lock</a></td>
+<td>Захватывает текстуру для прямого доступа.</td>
+</tr>
+<tr>
+<td><a href="hgefunc_textureunlock.html">Texture_Unlock</a></td>
+<td>Освобождает тексуру.</td>
+</tr>
+</table>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeparticle.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Конструкторы класса hgeParticleSystem</h1>
+<p>
+Чтобы создать и проинициализировать объект класса <b>hgeParticleSystem</b> можно воспользоваться 
+следующими конструкторами:
+</p>
+<pre>
+hgeParticleSystem(
+  const char *<i><b>filename</b></i>,
+  hgeSprite *<i><b>sprite</b></i>,
+  float <i><b>fps</b></i>=0
+);
+
+hgeParticleSystem(
+  hgeParticleSystemInfo *<i><b>psi</b></i>,
+  float <i><b>fps</b></i>=0
+);
+
+hgeParticleSystem(
+  const hgeParticleSystem &<i><b>ps</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>filename</i>
+<dd>Файл описания системы частиц. Этот файл должен содержать дисковый образ структуры 
+<a href="hgeparticle_psinfo.html">hgeParticleSystemInfo</a>, описывающей систему частиц.
+<dt><i>sprite</i>
+<dd>Указатель на созданный объект класса <a href="hgesprite__main.html">hgeSprite</a>, который будет
+использован в системе.
+<dt><i>psi</i>
+<dd>Указатель на созданную структур <a href="hgeparticle_psinfo.html">hgeParticleSystemInfo</a>, 
+описывающую систему частиц.
+<dt><i>fps</i>
+<dd>Частота обновления (количество раз в секунду) системы частиц. Используйте этот параметр, чтобы 
+поддерживать одинаковое поведение системы частиц, независимо от частоты кадров и уменьшить немного
+вычисления. Если значение равно 0 или опущено, тогда система частиц будет обновляться каждый раз при 
+вызове метода <a href="hgeparticle_update.html">Update</a>.
+</dl>
+<h2>Примечания</h2>
+<p>
+Файл описания файловой системы загружается с помощью функции <a href="hgefunc_resourceload.html">Resource_Load</a>,
+поэтому все возможности этой функции доступны.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeparticle.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

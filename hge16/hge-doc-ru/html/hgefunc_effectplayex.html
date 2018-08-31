@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Effect_PlayEx</h1>
+<p>
+Начинает воспроизведение звукового эффекта с дополнительными параметрами воспроизведения.
+</p>
+<pre>
+HCHANNEL Effect_PlayEx(
+  HEFFECT <i><b>effect</b></i>,
+  int <i><b>volume</b></i> = 100,
+  int <i><b>pan</b></i> = 0,
+  float <i><b>pitch</b></i> = 1.0,
+  bool <i><b>loop</b></i> = false
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>effect</i>
+<dd>Идентификатор звукового эффекта, который надо воспроизводить.
+<dt><i>volume</i>
+<dd>Необязательный параметр, значение громкости от 0 до 100. Значение по умолчанию - 100, означает 
+максимальную громкость.
+<dt><i>pan</i>
+<dd>Optional effect panning from -100 to 100. Default is 0, meaning center panning.
+<dt><i>pitch</i>
+<dd>Необязательный параметр, множитель высоты звука. Значение по умолчанию - 1.0, означает 
+нормальную высоту.
+<dt><i>loop</i>
+<dd>Необязательный параметр. Если равен <b>true</b>, эффект будет воспроизводиться циклически, до 
+тех пор, пока аудио канал не будет остановлен вручную. Значение по умолчанию - <b>false</b>.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+Возвращает идентификатор аудио канала, через который воспроизводится эффект.
+Используйте это значение в функциях управления каналами.
+</p>
+<h2>Примечания</h2>
+<p>
+Максимум четыре экземпляра одного и того же звукового эффекта может быть воспроизведено в одно и тоже
+время. Если все четыре экземпляра уже воспроизводятся вызовом <b>Effect_PlayEx</b>, то экземпляр с 
+наименьшей громкостью перезапустится с новыми значениями параметров.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_effectload.html">Effect_Load</a>,
+<a href="hgefunc_effectfree.html">Effect_Free</a>,
+<a href="hgefunc_effectplay.html">Effect_Play</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

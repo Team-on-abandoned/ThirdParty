@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_tutorials.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Пример 02 - Использование ввода, звука и рендеринга</h1>
+<p>
+<b>Д</b>ля того, чтобы что-нибудь вывести, нам понадобится структура <a href="hgedata_quad.html">hgeQuad</a>.
+Четырехугольники - простейший примитив используемый для рендеринга в <b>HGE</b>.
+Четырехугольник содержит 4 вершины, пронумерованные от 0 до 3 по часовой стрелке.
+<br><br>
+Так же нам понадобится идентификатор звукового эффекта.
+</p>
+<pre>
+hgeQuad quad;
+
+HEFFECT snd;
+</pre>
+<p>
+Дальше следуют переменные "геймплея" и константы, которые мы будем использовать.
+</p>
+<pre>
+float x=100.0f, y=100.0f;
+float dx=0.0f, dy=0.0f;
+
+const float speed=90;
+const float friction=0.98f;
+</pre>
+<p>
+Теперь мы содаем функцию, которая будет воспроизводить звук столкновения с параметрами, основываясь 
+на положении спрайта и скорости.
+</p>
+<pre>
+void boom() {
+  int pan=int((x-400)/4);
+  float pitch=(dx*dx+dy*dy)*0.0005f+0.2f;
+  hge->Effect_PlayEx(snd,100,pan,pitch);
+}
+</pre>
+<p>
+Теперь перейдем к функции кадра. Сначала, нам надо узнать, сколько прошло времени с последнего 
+вызова функции кадра, для выравнивания скорости анимации по текущей частоте кадров. Чтобы узнать это 
+время, вызываем функцию <a href="hgefunc_timergetdelta.html">Timer_GetDelta</a>.
+</p>
+<pre>
+bool FrameFunc()
+{
+  float dt=hge->Timer_GetDelta();
+</pre>
+<p>
+Теперь обработаем назатие клавиш. Мы используем функцию <a href="hgefunc_inputgetkeystate.html">Input_GetKeyState</a> 
+для определения состояния клавиш. Чтобы обработать нажатие кнопок мыши, можно воспользоваться 
+функцией <a href="hgefunc_inputgetkey.html">Input_GetKey</a>.
+</p>
+<pre>
+  if (hge->Input_GetKeyState(HGEK_ESCAPE)) return true;
+  if (hge->Input_GetKeyState(HGEK_LEFT)) dx-=speed*dt;
+  if (hge->Input_GetKeyState(HGEK_RIGHT)) dx+=speed*dt;
+  if (hge->Input_GetKeyState(HGEK_UP)) dy-=speed*dt;
+  if (hge->Input_GetKeyState(HGEK_DOWN)) dy+=speed*dt;
+</pre>
+<p>
+Теперь проведем кое-каие расчеты перемещения и определения столкновения, специфичные для нашего 
+примера:
+</p>
+<pre>
+  dx*=friction; dy*=friction; x+=dx; y+=dy;
+  if(x>784) {x=784-(x-784);dx=-dx;boom();}
+  if(x<16) {x=16+16-x;dx=-dx;boom();}
+  if(y>584) {y=584-(y-584);dy=-dy;boom();}
+  if(y<16) {y=16+16-y;dy=-dy;boom();}
+</pre>
+<p>
+Теперь нам надо обновить координаты спрайта и хотим нарисовать его. Поэтому мы заполняем значения 
+вершин новыми щначениями.
+</p>
+<pre>
+  quad.v[0].x=x-16; quad.v[0].y=y-16;
+  quad.v[1].x=x+16; quad.v[1].y=y-16;
+  quad.v[2].x=x+16; quad.v[2].y=y+16;
+  quad.v[3].x=x-16; quad.v[3].y=y+16;
+</pre>
+<p>
+Теперь мы готовы нарисовать наш спрайт. Чтобы начать вывод вызовем функцию <a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a>.
+Затем мы очищаем экран вызовом <a href="hgefunc_gfxclear.html">Gfx_Clear</a> и рисуем спрайт с 
+помощью вызовом <a href="hgefunc_gfxrenderquad.html">Gfx_RenderQuad</a>.
+Наконец мы заканчиваем вывод и обновление экрана, вызывая функцию <a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>.
+</p>
+<pre>
+  hge->Gfx_BeginScene();
+  hge->Gfx_Clear(0);
+  hge->Gfx_RenderQuad(&quad);
+  hge->Gfx_EndScene();
+
+  return false;
+}
+</pre>
+<p>
+Теперь посмотрим изменения в функции <b>WinMain</b>. В этом примере мы установим больше переменных 
+<b>HGE</b> до инициализации. Включим файл протокола и укажем видео режим:
+</p>
+<pre>
+  hge->System_SetState(HGE_LOGFILE, "hge_tut02.log");
+  hge->System_SetState(HGE_FRAMEFUNC, FrameFunc);
+  hge->System_SetState(HGE_TITLE,
+           "HGE Tutorial 02 - Using input, sound and rendering");
+
+  hge->System_SetState(HGE_FPS, 100);
+  hge->System_SetState(HGE_WINDOWED, true);
+  hge->System_SetState(HGE_SCREENWIDTH, 800);
+  hge->System_SetState(HGE_SCREENHEIGHT, 600);
+  hge->System_SetState(HGE_SCREENBPP, 32);
+</pre>
+<p>
+Когда <b>HGE</b> инициализирован, нужно загрузить текстуру, которая содержит графику и звуковой
+эффект:
+</p>
+<pre>
+    snd=hge->Effect_Load("menu.wav");
+    quad.tex=hge->Texture_Load("particles.png");
+</pre>
+<p>
+Теперь необходимо настроить структуру <a href="hgedata_quad.html">hgeQuad</a> которая используется 
+для рендеринга. Текстура четырехугольника уже подготовлена, теперь мы утсановим режим смешивания и 
+заполним массив вершин предполагаемыми значениями.
+<br><br>
+Мы не используем z-буфер в этом примере, так что значения z игнорируются, и мы установим их в 
+произвольное значение от 0.0 до 1.0, просто на всякий случай. Вормат цвета вершин <b>DWORD</b> - 0xAARRGGBB.
+<br><br>
+Координаты текстуры <b>tx</b> и <b>ty</b> для каждой вершины определяют ту часть текстуры, которая
+будет отображена в четырехугольнике. Значени принадлежат промежутку от 0.0 до 1.0. 0,0 означает
+левый верхний угол 1,1 - нижний правый угол текстуры. У нас текстура размерами 128x128 и мы зотим 
+использовать часть размером 32x32 начиная с 96,64.
+</p>
+<pre>
+    quad.blend=BLEND_ALPHAADD | BLEND_COLORMUL | BLEND_ZWRITE;
+
+    for(int i=0;i<4;i++)
+    {
+      quad.v[i].z=0.5f;
+      quad.v[i].col=0xFFFFA000;
+    }
+
+    quad.v[0].tx=96.0/128.0; quad.v[0].ty=64.0/128.0;
+    quad.v[1].tx=128.0/128.0; quad.v[1].ty=64.0/128.0;
+    quad.v[2].tx=128.0/128.0; quad.v[2].ty=96.0/128.0;
+    quad.v[3].tx=96.0/128.0; quad.v[3].ty=96.0/128.0;
+</pre>
+<p>
+Теперь мы готовы начать игровой цикл при помоши вызова <a href="hgefunc_systemstart.html">System_Start</a>. 
+Когда функция кадра возвращает <b>true</b> и игровой цикл заканчивается, загруженная текстура и 
+звуковой эффект должны быть удалены:
+</p>
+<pre>
+    hge->System_Start();
+
+    hge->Texture_Free(quad.tex);
+    hge->Effect_Free(snd);
+</pre>
+<p>
+Остальной процесс завершения аналогичен тому, что был в <a href="tutorials_tut01.html">Примере 01</a>.
+<br><br>
+Полный код с детальными коментариями для этого урока можно найти в директории <b>tutorials\tutorial02</b>. 
+Требуемые медиа файлы можно найти в директории <b>tutorials\precompiled</b>.
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

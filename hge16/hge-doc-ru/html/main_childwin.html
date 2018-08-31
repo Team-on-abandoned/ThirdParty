@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_main.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE в дочернем окне</h1>
+<p>
+<b>З</b>апуск <b>HGE</b> в дочернем окне управляемом приложением <b>Windows</b> может быть полезно, 
+когда создаешь внешние инструменты, или элементы управления ActiveX, или когда происходит интеграция 
+<b>HGE</b> в сторонние IDE (интегрированная среда разработки). Далее следуют указания, как это 
+следует делать.
+</p>
+<h2>Создание дочернего окна HGE</h2>
+<p>
+Чтобы запустить <b>HGE</b> в режиме дочернего окна, необходимо просто указать идентификатор 
+(handle) родительского окна. Чтобы это сделать, установите перменную системы <a href="hgeconst_systemstate.html#HGE_HWNDPARENT">HGE_HWNDPARENT</a> 
+перед вызовом <a href="hgefunc_systeminitiate.html">System_Initiate</a>:
+</p>
+<pre>
+hge->System_SetState(HGE_HWNDPARENT, (int)hwnd);
+</pre>
+<h2>Курсор мыши</h2>
+<p>
+Возможно вы предпочитаете, чтобы <b>HGE</b> пользовался стандартным курсором Windows в режиме
+дочернего окна. Этого можно добиться установив переменную системы <a href="hgeconst_systemstate.html#HGE_HIDEMOUSE">HGE_HIDEMOUSE</a>
+в значение <b>false</b>:
+</p>
+<pre>
+hge->System_SetState(HGE_HIDEMOUSE, false);
+</pre>
+<h2>Обработка сообщений приложения и выполнения функции кадра</h2>
+<p>
+Чтобы добавить дополнительную гибкость функция <a href="hgefunc_systemstart.html">System_Start</a> 
+ведет себе немного подругому в режиме дочернего окна. Во-первых, она возвращается после одного 
+вызова пользовательской функции кадра, в зависимости от значение, которое она вернет. Во-вторых, она 
+не обрабатывает оконных сообщений. Поэтому вам придется самостоятельно организовать цикл обработки 
+сообщений. Вот простой пример, досточный для правильного запуска <b>HGE</b>:
+</p>
+<pre>
+for(;;)
+{
+  if(hge->System_GetState(HGE_HWND).int_value)
+    hge->System_Start();
+
+  if(PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
+  { 
+    if(msg.message == WM_QUIT) break;
+    DispatchMessage(&msg);
+  }
+}
+</pre>
+<h2>Обработка сообщения WM_PAINT</h2>
+<p>
+По умолчанию, <b>HGE</b> не обновляет свое окно по сообщению <b>WM_PAINT</b>, так как для простоты, оно
+совмещает обновление/отрисовку кадра. Вы можете выделить код отрисовки в отдельную функцию и 
+вызывать ее как из функции кадра, так и  по сообщению <b>WM_PAINT</b>, чтобы окно лучше выглядело 
+во время перемещения и изменения размеров:
+</p>
+<pre>
+case WM_PAINT:
+    RenderHGEGame();
+    break;  // pass to default window proc
+</pre>
+<h2>Перемещение и изменение размеров окна HGE</h2>
+<p>
+Вы можете двигать и изменять размеры окна <b>HGE</b> посредствам функций WinAPI, таких как <b>MoveWindow</b>.
+Когда его окно меняет размер, <b>HGE</b> переиницилизирует DirectX, чтобы учесть новые значения:
+</p>
+<pre>
+MoveWindow((HWND)(hge->System_GetState(HGE_HWND).int_value),
+           x, y, width, height, true);
+</pre>
+<h2>Закрытие окна HGE</h2>
+<p>
+С окном <b>HGE</b> связано много ресурсов. Поэтому необходимо использовать функцию <a href="hgefunc_systemshutdown.html">System_Shutdown</a>
+для их освобождения, не полагайтесь просто на функцию разрушения окна. Хорошее место для ее вызова - 
+обработчик сообщения <b>WM_DESTROY</b> родительского окна:
+</p>
+<pre>
+case WM_DESTROY:
+    FreeLoadedHGEResources();
+    hge->System_Shutdown();
+    PostQuitMessage(0);
+    return FALSE;
+</pre>
+<h2>Ограничения на дочернее окно</h2>
+<p>
+<b>1. Чтобы принять события от клавиатуры</b> в режиме дочернего окна <b>HGE</b>
+должна иметь фокус ввода. Она получает его автоматически когда вы щелкаете мышкой куда-нибудь внутрь 
+окна. Чтобы явно установить фокус, используйте следующий вызов:
+</p>
+<pre>
+SetFocus((HWND)(hge->System_GetState(HGE_HWND).int_value));
+</pre>
+<p>
+<b>2. Переключение в полноэкранный режим</b> недоступно в режиме дочернего окна. Согласно переменной 
+системы <a href="hgeconst_systemstate.html#HGE_WINDOWED">HGE_WINDOWED</a>, <b>HGE</b>
+будет работать в оконном режиме.
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

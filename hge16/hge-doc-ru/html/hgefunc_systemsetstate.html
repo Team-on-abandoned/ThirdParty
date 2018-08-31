@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::System_SetState</h1>
+<p>
+Устанавливает внутреннюю переменную системы.
+</p>
+<pre>
+void System_SetState(
+  hgeState <i><b>state</b></i>,
+  hgeValue <i><b>value</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>state</i>
+<dd>Значение перечисления <a href="hgeconst_systemstate.html">hgeState</a>. Определяет необходимую 
+переменную системы.
+<dt><i>value</i>
+<dd><a href="hgedata_state.html">hgeValue</a> - объект, содержащий необходимое значение переменной.
+</dl>
+<h2>Примечания</h2>
+<p>
+Используйте данную функцию для установки необходимого значения внутренних переменных системы, таких 
+как разрешение экрана, заголовок окна, название файла протокола и т.д. И хотя многие из них имеют 
+значения по умолчанию, как мимнимум переменная <a href="hgeconst_systemstate.html#HGE_FRAMEFUNC">HGE_FRAMEFUNC</a>
+должна быть установлена перед вызовом <a href="hgefunc_systemstart.html">System_Start</a>.
+<br><br>
+Смотри секцию <a href="hgeconst_systemstate.html">System states</a> полного описания переменных
+системы.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_systemgetstate.html">System_GetState</a>,
+<a href="hgeconst_systemstate.html">System states</a>,
+<a href="hgedata_state.html">System state value class</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

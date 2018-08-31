@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgedata.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Аппаратный формат цвета в HGE</h1>
+<p>
+<b>Н</b>есколько функций <b>HGE</b> используют цвет в качетсве параметра или возвращаемого значения.
+Это обычный <b>DWORD</b>, содержащий четыре 8-битных значения для Красной, Зеленой, Синей и Альфа
+составляющей цвета, представляемых в следующем виде: <b>0xAARRGGBB</b>.
+<br><br>
+Т.е старший <b>BYTE</b> <b>DWORD</b>-а содержит значение альфаканала.
+Следующий <b>BYTE</b> содержит значение Красной составляющей. Затем идет Зеленая составляющая.
+И младший <b>BYTE</b> содержит значение Синей составляющей.
+</p>
+<h2>Макросы</h2>
+<p>
+Можете использовать следующие максросы для управления значениями цвета в формате <b>DWORD</b>:
+</p>
+<pre>
+ARGB(a,r,g,b)
+  ((DWORD(a)<<24) + (DWORD(r)<<16) + (DWORD(g)<<8) + DWORD(b))
+</pre>
+<p>
+Макрос <b>ARGB</b> создает <b>DWORD</b> значение цвета с заданными компонентами.
+</p>
+<pre>
+GETA(col)      ((col)>>24)
+GETR(col)      (((col)>>16) & 0xFF)
+GETG(col)      (((col)>>8) & 0xFF)
+GETB(col)      ((col) & 0xFF)
+</pre>
+<p>
+Макросы <b>GETA</b>, <b>GETR</b>, <b>GETG</b> и <b>GETB</b> возвращают указанную компоненту цвета 
+заданного в виде <b>DWORD</b>.
+</p>
+<pre>
+SETA(col,a)    (((col) & 0x00FFFFFF) + (DWORD(a)<<24))
+SETR(col,r)    (((col) & 0xFF00FFFF) + (DWORD(r)<<16))
+SETG(col,g)    (((col) & 0xFFFF00FF) + (DWORD(g)<<8))
+SETB(col,b)    (((col) & 0xFFFFFF00) + DWORD(b))
+</pre>
+<p>
+Макросы <b>SETA</b>, <b>SETR</b>, <b>SETG</b> and <b>SETB</b> меняют требуемую компоненту цвета, 
+представленного в виде <b>DWORD</b>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgecolor__main.html">Вспомогательный класс hgeColor</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

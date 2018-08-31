@@ -1,0 +1,387 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_tutorials.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Пример 06 - Создание меню</h1>
+<p>
+<b>Э</b>тот пример показывает, как создать собственный элемент управления и меню.
+<br><br>
+<img src="t06_1.gif" width=150 height=113>
+</p>
+<h2>Создание пользовательских элементов управления</h2>
+<p>
+Сначала, мы должны определить класс нового элемента управления, наследованныц от <a href="hgeguio__main.html">hgeGUIObject</a>:
+</p>
+<pre>
+class hgeGUIMenuItem : public hgeGUIObject
+{
+public:
+  hgeGUIMenuItem(int id, hgeFont *fnt, HEFFECT snd,
+          float x, float y, float delay, char *title);
+
+  virtual void  Render();
+  virtual void  Update(float dt);
+
+  virtual void  Enter();
+  virtual void  Leave();
+  virtual bool  IsDone();
+  virtual void  Focus(bool bFocused);
+  virtual void  MouseOver(bool bOver);
+
+  virtual bool  MouseLButton(bool bDown);
+  virtual bool  KeyClick(int key, int chr);
+
+private:
+  hgeFont       *fnt;
+  HEFFECT       snd;
+  float         delay;
+  char          *title;
+
+  hgeColor      scolor, dcolor, scolor2, dcolor2, color;
+  hgeColor      sshadow, dshadow, shadow;
+  float         soffset, doffset, offset;
+  float         timer, timer2;
+};
+</pre>
+<p>
+Конструктор нового элемента управления должен инициализировать члены класса 
+<a href="hgeguio__main.html">hgeGUIObject</a>:
+<b>id</b>, <b>bStatic</b>, <b>bVisible</b>, <b>bEnabled</b> and <b>rect</b>:
+</p>
+<pre>
+hgeGUIMenuItem::hgeGUIMenuItem(int _id, hgeFont *_fnt,
+                HEFFECT _snd, float _x, float _y,
+                float _delay, char *_title)
+{
+  id=_id;
+  fnt=_fnt;
+  snd=_snd;
+  delay=_delay;
+  title=_title;
+
+  color.SetHWColor(0xFFFFE060);
+  shadow.SetHWColor(0x30000000);
+  offset=0.0f; timer=-1.0f; timer2=-1.0f;
+
+  bStatic=false; bVisible=true; bEnabled=true;
+
+  float w=fnt->GetStringWidth(title);
+  rect.Set(_x-w/2, _y, _x+w/2, _y+fnt->GetHeight());
+}
+</pre>
+<p>
+Метод <a href="hgeguio_render.html">Render</a>, естественно, должен определить каждый элемент
+управления:
+</p>
+<pre>
+void hgeGUIMenuItem::Render()
+{
+  fnt->SetColor(shadow.GetHWColor());
+  fnt->Render(rect.x1+offset+3, rect.y1+3, title);
+  fnt->SetColor(color.GetHWColor());
+  fnt->Render(rect.x1-offset, rect.y1-offset, title);
+}
+</pre>
+<p>
+Все остальные методы необязательы и вы можете не определять их, если они не нужны.
+<br><br>
+Метод <a href="hgeguio_update.html">Update</a> вызывается каждый раз, когда обновляется GUI и должен 
+выполнять анимацию. В этом примере у нас есть два таймера и согласно им мы изменем цвет элемента 
+управления и его позицию:
+</p>
+<pre>
+void hgeGUIMenuItem::Update(float dt)
+{
+  if(timer2 != -1.0f)
+  {
+    timer2+=dt;
+    if(timer2 >= delay+0.1f)
+    {
+      color=scolor2+dcolor2;
+      shadow=sshadow+dshadow;
+      offset=0.0f;
+      timer2=-1.0f;
+    }
+    else
+    {
+      if(timer2 < delay) { color=scolor2; shadow=sshadow; }
+      else {
+        color=scolor2+dcolor2*(timer2-delay)*10;
+        shadow=sshadow+dshadow*(timer2-delay)*10;
+      }
+    }
+  }
+  else if(timer != -1.0f)
+  {
+    timer+=dt;
+    if(timer >= 0.2f)
+    {
+      color=scolor+dcolor;
+      offset=soffset+doffset;
+      timer=-1.0f;
+    }
+    else
+    {
+      color=scolor+dcolor*timer*5;
+      offset=soffset+doffset*timer*5;
+    }
+  }
+}
+</pre>
+<p>
+Метод <a href="hgeguio_enter.html">Enter</a> вызывается перед началом появления GUI на экране. 
+Конторл долден Начальную анимацю в нем:
+</p>
+<pre>
+void hgeGUIMenuItem::Enter()
+{
+  hgeColor tcolor2;
+
+  scolor2.SetHWColor(0x00FFE060);
+  tcolor2.SetHWColor(0xFFFFE060);
+  dcolor2=tcolor2-scolor2;
+
+  sshadow.SetHWColor(0x00000000);
+  tcolor2.SetHWColor(0x30000000);
+  dshadow=tcolor2-sshadow;
+
+  timer2=0.0f;
+}
+</pre>
+<p>
+Метод <a href="hgeguio_leave.html">Leave</a> вызывается, когда GUI начинает исчезать с экрана.
+Элемент управления должне начать анимацию Окончания в этой функции:
+</p>
+<pre>
+void hgeGUIMenuItem::Leave()
+{
+  hgeColor tcolor2;
+
+  scolor2.SetHWColor(0xFFFFE060);
+  tcolor2.SetHWColor(0x00FFE060);
+  dcolor2=tcolor2-scolor2;
+
+  sshadow.SetHWColor(0x30000000);
+  tcolor2.SetHWColor(0x00000000);
+  dshadow=tcolor2-sshadow;
+
+  timer2=0.0f;
+}
+</pre>
+<p>
+Метод <a href="hgeguio_isdone.html">IsDone</a> используется для проверки того, закончил ли элемент 
+управления свою анимацию Начала/Окончания. Когда анимация закончена, она должна вернуть значение <b>true</b>:
+</p>
+<pre>
+bool hgeGUIMenuItem::IsDone()
+{
+  if(timer2==-1.0f) return true;
+  else return false;
+}
+</pre>
+<p>
+Метод <a href="hgeguio_focus.html">Focus</a> вызывается когда элемент управления получает или теряет 
+фокус ввода. В нашем примере мы начинаем в этом методе анимацию получения фокуса:
+</p>
+<pre>
+void hgeGUIMenuItem::Focus(bool bFocused)
+{
+  hgeColor tcolor;
+
+  if(bFocused)
+  {
+    hge->Effect_Play(snd);
+    scolor.SetHWColor(0xFFFFE060);
+    tcolor.SetHWColor(0xFFFFFFFF);
+    soffset=0;
+    doffset=4;
+  }
+  else
+  {
+    scolor.SetHWColor(0xFFFFFFFF);
+    tcolor.SetHWColor(0xFFFFE060);
+    soffset=4;
+    doffset=-4;
+  }
+
+  dcolor=tcolor-scolor;
+  timer=0.0f;
+}
+</pre>
+<p>
+Метод <a href="hgeguio_mouseover.html">MouseOver</a> вызывается, чтобы оповестить элемент управления 
+о том, что курсор мыши вошел или вышел из области элемента управления. Здесь мы просто устанавливаем 
+фокус ввода на наш элемент управления, когда курсор проходит над ним:
+</p>
+<pre>
+void hgeGUIMenuItem::MouseOver(bool bOver)
+{
+  if(bOver) gui->SetFocus(id);
+}
+</pre>
+<p>
+Метод <a href="hgeguio_mouselbutton.html">MouseLButton</a> оповещает элемент управления о том, что 
+состояние левой кнопки мыши изменилось. Если элемент управления меняет свое состояние и хочет 
+оповестить об этом вызвавшего, он должен вернуть значение <b>true</b>:
+</p>
+<pre>
+bool hgeGUIMenuItem::MouseLButton(bool bDown)
+{
+  if(!bDown)
+  {
+    offset=4;
+    return true;
+  }
+  else
+  {
+    hge->Effect_Play(snd);
+    offset=0;
+    return false;
+  }
+}
+</pre>
+<p>
+Метод <a href="hgeguio_keyclick.html">KeyClick</a> вызывается, чтобы оповестить элемент управления о 
+том что была нажата клавиша. Если элемент управления меняет свое состояние и хочет оповестить 
+вызывавшего, он должен вернуть значение <b>true</b>:
+</p>
+<pre>
+bool hgeGUIMenuItem::KeyClick(int key, int chr)
+{
+  if(key==HGEK_ENTER || key==HGEK_SPACE)
+  {
+    MouseLButton(true);
+    return MouseLButton(false);
+  }
+
+  return false;
+}
+</pre>
+<p>
+Отлично, теперь нам надо определить поведение нашего нового элемента управления.
+</p>
+<h2>Использование GUI</h2>
+<p>
+Это легкая часть. Сначала нам нужны некоторые идентификаторы ресурсов:
+</p>
+<pre>
+HEFFECT    snd;
+HTEXTURE   tex;
+
+hgeGUI     *gui;
+hgeFont    *fnt;
+hgeSprite  *spr;
+</pre>
+<p>
+В функции <b>WinMain</b>, во время инициализации нам нужно загрузить требуемые ресурсы:
+</p>
+<pre>
+  snd=hge->Effect_Load("menu.wav");
+  tex=hge->Texture_Load("cursor.png");
+
+  fnt=new hgeFont("font1.fnt");
+  spr=new hgeSprite(tex,0,0,32,32);
+</pre>
+<p>
+Теперь мы можем создать GUI и добавить наши пункты меню туда. Элементы управления GUI управляются 
+изнутри библиотеки и можно не сохранять указатели на них:
+</p>
+<pre>
+  gui=new hgeGUI();
+
+  gui->AddCtrl(new hgeGUIMenuItem(
+               1,fnt,snd,400,200,0.0f,"Play"));
+  gui->AddCtrl(new hgeGUIMenuItem(
+               2,fnt,snd,400,240,0.1f,"Options"));
+  gui->AddCtrl(new hgeGUIMenuItem(
+               3,fnt,snd,400,280,0.2f,"Instructions"));
+  gui->AddCtrl(new hgeGUIMenuItem(
+               4,fnt,snd,400,320,0.3f,"Credits"));
+  gui->AddCtrl(new hgeGUIMenuItem(
+               5,fnt,snd,400,360,0.4f,"Exit"));
+</pre>
+<p>
+Теперь установим метод навигации GUI, изображение курсора мыши и фокус ввода по умолчанию, затем 
+запустим Начальную анимацию:
+</p>
+<pre>
+  gui->SetNavMode(HGEGUI_UPDOWN | HGEGUI_CYCLED);
+  gui->SetCursor(spr);
+  gui->SetFocus(1);
+  gui->Enter();
+</pre>
+<p>
+Сейчас давайте посмотрим, как мы обновляем наше меню и получаем нотификации. В нашей функции кадра 
+(<b>FrameFunc</b>) мы вызываем метод <a href="hgegui_update.html">hgeGUI::Update</a> для обновления 
+анимации и обработки ввода пользователя. Если элемент управления изменил свое состояние, этот метод 
+вернет идентификатор элемента управления. Если все элементы закончат свои анимации Окончания, она 
+вернет значение -1. Если неслучится ничего интересного, вернется значение 0.
+</p>
+<pre>
+  int id;
+  static int lastid=0;
+  float dt=hge->Timer_GetDelta();
+
+  id=gui->Update(dt);
+  if(id == -1)
+  {
+    switch(lastid)
+    {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+        gui->SetFocus(1);
+        gui->Enter();
+        break;
+
+      case 5: return true;
+    }
+  }
+  else if(id) { lastid=id; gui->Leave(); }
+</pre>
+<p>
+Для того, чтобы нарисовать меню просто вызовем метод <a href="hgegui_render.html">hgeGUI::Render</a>:
+</p>
+<pre>
+  hge->Gfx_BeginScene();
+  gui->Render();
+  hge->Gfx_EndScene();
+</pre>
+<p>
+Итак, меню запущено и работает. Теперь вернемся к функции <b>WinMain</b>.
+В конце мы должны удалить GUI и освободить ресурсы:
+</p>
+<pre>
+  delete gui;
+  delete fnt;
+  delete spr;
+  hge->Texture_Free(tex);
+  hge->Effect_Free(snd);
+</pre>
+<p>
+Полный исходный код с детальными комментариями для этого примера можно найти в директории <b>tutorials\tutorial06</b>. 
+Требуемые медиа фалы можно найти в директории <b>tutorials\precompiled</b>.
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

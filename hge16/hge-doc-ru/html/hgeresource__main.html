@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="switchContents('cnt_main.html','cnt_hgeresource.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Вспомогательный класс hgeResourceManager</h1>
+<p>
+<b>hgeresourceManager</b> является вспомогательным классом <b>HGE</b> для автоматизации создания 
+сложных ресурсов и управления ими в памяти.
+</p>
+<h2>Методы hgeResourceManager</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td width=24%><a href="hgeresource_constructor.html">Конструктор</a></td>
+<td>Создает и инициализирует объекты класса <b>hgeResourceManager</b>.</td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td><a href="hgeresource_changescript.html">ChangeScript</a></td>
+<td>Меняет текущий скрипт ресурсов.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_precache.html">Precache</a></td>
+<td>Создает все ресурсы указанной группы в памяти.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_purge.html">Purge</a></td>
+<td>Удаляет все ресурсы указанной группы в памяти.</td>
+</tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr>
+<td><a href="hgeresource_getresource.html">GetResource</a></td>
+<td>Возвращает указатель на ресурс.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_gettexture.html">GetTexture</a></td>
+<td>Возвращает идентификатор текстуры по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_geteffect.html">GetEffect</a></td>
+<td>Возвращает идентификатор звукового эффекта по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getmusic.html">GetMusic</a></td>
+<td>Возвращает идентификатор музыки по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getstream.html">GetStream</a></td>
+<td>Возвращает идентификатор звукового потока по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_gettarget.html">GetTarget</a></td>
+<td>Возвращает идентификатор цели рендеринга по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getsprite.html">GetSprite</a></td>
+<td>Возвращает указатель на спрайт по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getanimation.html">GetAnimation</a></td>
+<td>Возвращает указатель на анимацию по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getfont.html">GetFont</a></td>
+<td>Возвращает указатель на шрифт по названию.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getparticlesystem.html">GetParticleSystem</a></td>
+<td>Возвращает указатель на систему частиц по имени.</td>
+</tr>
+<tr>
+<td><a href="hgeresource_getdistortionmesh.html">GetDistortionMesh</a></td>
+<td>Возвращает указатель на сетку искажения по имени.</td>
+</tr>
+</table>
+</p>
+<h2>Дополнительная информация</h2>
+<p>
+<a href="hgeresource_script.html">Скрипт ресурсов</a>
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeresource.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Gfx_StartBatch</h1>
+<p>
+Начинает вывод пользовательской последовательности примитивов.
+</p>
+<pre>
+hgeVertex *Gfx_StartBatch(
+  int <i><b>prim_type</b></i>,
+  HTEXTURE <i><b>tex</b></i>,
+  int <i><b>blend</b></i>,
+  int *<i><b>max_prim</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>prim_type</i>
+<dd>Тип графических примитивов которые необходимо выводить:<br>
+<b>HGEPRIM_LINES</b> - линии<br>
+<b>HGEPRIM_TRIPLES</b> - треугольники<br>
+<b>HGEPRIM_QUADS</b> - четырехугольники
+<dt><i>tex</i>
+<dd>Идентификатор текстуры или 0.
+<dt><i>blend</i>
+<dd>Режим смешивания.
+<dt><i>max_prim</i>
+<dd>Указатель на <b>int</b> который содержит максимальное число примитивов, доступных в одной 
+последовательности.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+Возвращает указатель на массив вершин, которые будут заполнены и содердит максимальное число 
+примитивово, указанное в <b>max_prim</b>.
+</p>
+<h2>Примечания</h2>
+<p>
+<b>Gfx_StartBatch</b> - лазейка в сердце <b>HGE</b> и <b>DirectX</b>, только для экспертов.
+Она позволяет прямой доступ к аппаратному буферу вершин и позволяет с максимальной скоростью выводить
+большое количсетво графических примитивов. Может быть использована для задач с очень сложной 
+геометрией или текстурными эффектами или при выводе сложных расчитанных заранее объектов.
+<br><br>
+Функция <b>Gfx_StartBatch</b> должна быть вызвана между вызовами <a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a>
+и <a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>. Чтобы закончить последовательность, 
+воспользуйтесь функцией <a href="hgedata_gfxfinishbatch.html">Gfx_FinishBatch</a>. Никакие другие 
+функции вывода не должны находиться внутри пары вызовов <b>Gfx_StartBatch</b>/<b>Gfx_FinishBatch</b>.
+<br><br>
+Размер буфера вершин - постоянная величина и едва ли будет меняться. Он может содержать до 1000 
+прямоугольников / 1333 треугольников / 2000 линий. В буфер необходимо записывать по 2 вершины на 
+линию, 3 вершины на треугольник и 4 вершины на каждый прямоугольник. Действительное число примитивов,
+ записанное в буфер необходимо передать в вызове функции <a href="hgedata_gfxfinishbatch.html">Gfx_FinishBatch</a>.
+<br><br>
+<b>Gfx_StartBatch</b> сбрасывает в видеоадаптер все накопленные графические примитивы.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_gfxfinishbatch.html">Gfx_FinishBatch</a>,
+<a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a>,
+<a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

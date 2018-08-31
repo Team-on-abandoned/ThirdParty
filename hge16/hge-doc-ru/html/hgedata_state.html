@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgedata.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Класс системных переменных в HGE</h1>
+<p>
+<b>Ч</b>тобы изменить или узнать различные внутренние переменны <b>HGE</b> используются две функции:
+<a href="hgefunc_systemsetstate.html">System_SetState</a> и <a href="hgefunc_systemgetstate.html">System_GetState</a>.
+Класс <b>hgeValue</b> служит для передачи и получения значений различных типов.
+</p>
+<pre>
+class hgeValue
+{
+public:
+  hgeValue(int value);
+  hgeValue(bool value);
+  hgeValue(char *value);
+  hgeValue(bool (*value)());
+
+  union
+  {
+    int     <b>int_value</b>;
+    bool    <b>bool_value</b>;
+    char*   <b>string_value</b>;
+    bool    (*<b>func_value</b>)();
+  };
+};
+</pre>
+<p>
+Таким образом, чтобы передать значение произвольного типа в функцию <a href="hgefunc_systemsetstate.html">System_SetState</a>
+можно указать его прямо в вызове. И чтобы получить значение, которое возвращает функция
+<a href="hgefunc_systemgetstate.html">System_GetState</a>, нужно обратиться к соответствующему члену 
+полученного объекта класса <b>hgeValue</b>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_systemsetstate.html">System_SetState</a>,
+<a href="hgefunc_systemgetstate.html">System_GetState</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

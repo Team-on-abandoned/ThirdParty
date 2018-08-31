@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_setup.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Dev C++ 5</h1>
+<h2>1. Создание пустого проекта Win32 Application</h2>
+<p>Откройте зкладку <b>File->New->Project...->Basic</b>. Впишите название проекта и выберите иконку 
+<b>Windows Application</b>:</p>
+<center><img src="devcppsetup1.gif" width=486 heght=299 alt="Create project dialog"></center>
+<br>
+<p>Нажмите <b>Ok</b>.
+<br><br>
+В следующем окне выберите или создайте директорию для проекта и нажмите <b>Save</b>:</p>
+<center><img src="devcppsetup2.gif" width=486 heght=419 alt="Save project dialog"></center>
+<br>
+<h2>2. Установка путей до библиотек и заголовков</h2>
+<p>
+Откройте закладку <b>Project->Project Options->Directories</b> и выберите под-закладку <b>Library Directories</b>.
+Нажмите кнопку <b>...</b>, пролистайте до <b>HGE</b> директории "lib\gcc" и нажмите <b>Ok</b>. Потом 
+нажмите <b>Add</b>:</p>
+<center><img src="devcppsetup3.gif" width=477 heght=348 alt="Library Directories"></center>
+<br>
+<p>
+Затем выберите под-закладку <b>Include Directories</b> и повторите операцию для <b>HGE</b> директории "include":</p>
+<center><img src="devcppsetup4.gif" width=477 heght=348 alt="Include Directories"></center>
+<br>
+<p>Не нажимайте сразу <b>Ok</b>.</p>
+<h2>3. Добавление библиотек в проект</h2>
+<p>
+В этом же диалоге выберите закладку <b>Parameters</b>, нажмите кнопку <b>Add Library or Object</b>, 
+пролистайте до файла "hge.a" и нажмите <b>Open</b>. Повторите теже действия для "hgehelp.a":
+<center><img src="devcppsetup5.gif" width=477 heght=348 alt="Adding import libraries to a project"></center>
+<br>
+<p>
+Теперь нажмите <b>Ok</b>.
+</p>
+<h2>4. Начинайте писать код!</h2>
+<p>
+Добавьте заголовок <b>hge.h</b> для доступа к функциям <b>HGE</b>. Смотрите секию 
+<a href="tutorials__main.html">Примеры</a> с простыми примерами кода.<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

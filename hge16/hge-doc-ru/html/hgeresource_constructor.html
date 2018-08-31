@@ -1,0 +1,63 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeresource.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Конструктор класса hgeResourceManager</h1>
+<p>
+Создать и проинициализирует объект класса <b>hgeResourceManager</b> можно используя следующий 
+конструктор:
+</p>
+<pre>
+hgeResourceManager(
+  const char *<i><b>scriptname</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>scriptname</i>
+<dd>Имя файла скрипт ресурса. Если равно 0 или опущено, то скрипт не используется.
+</dl>
+<h2>Примечания</h2>
+<p>
+Хотя приходится создавать скприт ресурсов для управления сложными ресурсами, вы всегда можете 
+пользловаться классом <b>hgeResourceManager</b> и без скрипта. Он позволит вам обращаться к простым
+ресурсам, текстурам, звуковым объектам и музыке по их названиям файлов.
+<br><br>
+Все ресурсы, загруженные объектом класса <b>hgeResourceManager</b> будут удалены из памяти в 
+деструкторе <b>hgeResourceManager</b>.
+<br><br>
+Скрипт ресурсов загружается функцией <a href="hgefunc_resourceload.html">Resource_Load</a>, поэтому 
+все ее особенности применимы к этому ресурсу.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeresource.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgeresource_changescript.html">ChangeScript</a>,
+<a href="hgeresource_script.html">Скрипт ресурсов</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

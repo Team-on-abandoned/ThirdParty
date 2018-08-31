@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeparticle.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Структура hgeParticleSystemInfo</h1>
+<p>
+Структура <b>hgeParticleSystemInfo</b> используется для определения параметров системы частиц:
+</p>
+<pre>
+struct hgeParticleSystemInfo
+{
+  hgeSprite*  <b>sprite</b>;
+  int         <b>nEmission</b>;
+  float       <b>fLifetime</b>;
+
+  float       <b>fParticleLifeMin</b>;
+  float       <b>fParticleLifeMax</b>;
+
+  float       <b>fDirection</b>;
+  float       <b>fSpread</b>;
+  bool        <b>bRelative</b>;
+
+  float       <b>fSpeedMin</b>;
+  float       <b>fSpeedMax</b>;
+
+  float       <b>fGravityMin</b>;
+  float       <b>fGravityMax</b>;
+
+  float       <b>fRadialAccelMin</b>;
+  float       <b>fRadialAccelMax</b>;
+
+  float       <b>fTangentialAccelMin</b>;
+  float       <b>fTangentialAccelMax</b>;
+
+  float       <b>fSizeStart</b>;
+  float       <b>fSizeEnd</b>;
+  float       <b>fSizeVar</b>;
+
+  float       <b>fSpinStart</b>;
+  float       <b>fSpinEnd</b>;
+  float       <b>fSpinVar</b>;
+
+  hgeColor    <b>colColorStart</b>;
+  hgeColor    <b>colColorEnd</b>;
+  float       <b>fColorVar</b>;
+  float       <b>fAlphaVar</b>;
+};
+</pre>
+<h2>Члены</h2>
+<dl>
+<dt>sprite
+<dd>Указатель на объект класса <a href="hgesprite__main.html">hgeSprite</a> используемый для 
+отображения частиц. Видимо, самые полезные параметры в нем, это текстура, метод смешивания и центр. 
+Помимо этого сам класс <a href="hgesprite__main.html">hgeSprite</a> можно заменить на 
+<a href="hgeanim__main.html">hgeAnimation</a> или любой другой наследованный от него.
+<dt>nEmission
+<dd>Число частиц, которое должно быть испущено каждую секунду. Помните, что максимальное число
+частиц доступное одновременно в одной системе - 500. Если число превысит эту границу, новые частицы 
+не будут создаваться, до тех пор пока одна из частиц не умрет. Чилсло одновременно живущих частиц 
+зависит от членов <b>nEmission</b>, <b>fParticleLifeMin</b> и <b>fParticleLifeMax</b>.
+<dt>fLifetime
+<dd>Период времени, втечение которого система частиц должна излучать частицы (в секундах). Когда это 
+время пройдет (отсчитывается от вызова метода <a href="hgeparticle_fire.html">Fire</a>) частицы 
+прекращают испускаться. Если значение равно -1.0, система будет испускать частицы, до тех пор пока 
+ее не остановят вручную.
+</dl>
+<dl>
+<dt>fParticleLifeMin
+<dd>Минимальное время жизни, для каждой частицы, в секундах.
+<dt>fParticleLifeMax
+<dd>Максимальное время жизни, для каждой частицы, в секундах.
+</dl>
+<dl>
+<dt>fDirection
+<dd>Угол в радианах, опредляющий направление излучения частиц.
+<dt>fSpread
+<dd>Угол в радианах, определяющий сектор в котором частицы излучаются. Например, если оно равно 0.5, 
+то направление выпущеных частиц лежит в промежутке <b>fDirection</b>-0.5 и <b>fDirection</b>+0.5. 
+Если <b>fSpread</b> равняется 2*pi, параметр <b>fDirection</b> становится безсмысленным, так как 
+покрывается весь круг.
+<dt>bRelative
+<dd>Если член равен <b>true</b>, член <b>fDirection</b> рассматривается как относительно направление 
+к текущему направлению движения системы частиц. Если <b>false</b>, член <b>fDirection</b> 
+рассматривается как абсолютное (0 означает направление вверх).
+</dl>
+<dl>
+<dt>fSpeedMin
+<dd>Минимальная начальная скорость для каждой частицы в пекселях на секунуду.
+<dt>fSpeedMax
+<dd>Максимальная начальная скорость для каждой частицы в пекселях на секунуду.
+</dl>
+<dl>
+<dt>fGravityMin
+<dd>Минимальное значение гравитации частицы. Проще говоря, гравитация это ускорение по оси y.
+<dt>fGravityMax
+<dd>Максимальное значение гравитации частицы. Проще говоря, гравитация это ускорение по оси y.
+</dl>
+<dl>
+<dt>fRadialAccelMin
+<dd>Минимальное значени ускорения направленного к центру системы частиц для каждой частицы.
+<dt>fRadialAccelMax
+<dd>Максимальное значени ускорения направленного к центру системы частиц для каждой частицы.
+</dl>
+<dl>
+<dt>fTangentialAccelMin
+<dd>Минимальное значени ускорения направленного к перпендикулярно радиальному ускорению для каждой частицы.
+<dt>fTangentialAccelMax
+<dd>Минимальное значени ускорения направленного к перпендикулярно радиальному ускорению для каждой частицы.
+</dl>
+<dl>
+<dt>fSizeStart
+<dd>Начальный масштаб для каждой частицы. 1.0 означает исзодный размер спрайта.
+<dt>fSizeEnd
+<dd>Конечный масштаб для каждой частицы. 1.0 означает исзодный размер спрайта.
+<dt>fSizeVar
+<dd>Начальное значение вариации масштаба от 0.0 (означает отсутствие вариации) до 1.0 (означает 
+произвольную вариацию в пределах от <b>fSizeStart</b> до <b>fSizeEnd</b>).
+</dl>
+<dl>
+<dt>fSpinStart
+<dd>Начальный угол закручивания частицы в радианах.
+<dt>fSpinEnd
+<dd>Конечный угол закручивания частицы в радианах.
+<dt>fSpinVar
+<dd>Начальная вариация угла закручивания от 0.0 (означает отсутствуие вариации) до 1.0 (означает 
+случайную вариацию от <b>fSpinStart</b> до <b>fSpinEnd</b>).
+</dl>
+<dl>
+<dt>colColorStart
+<dd>Начальный цвет и прозрачность частицы. Смотрите класс <a href="hgecolor__main.html">hgeColor</a> 
+для подробной информации.
+<dt>colColorEnd
+<dd>Финальный цвет и прозрачность частицы. Смотрите класс  <a href="hgecolor__main.html">hgeColor</a> 
+для подробной информации.
+<dt>fColorVar
+<dd>Начальная вариация цвета от 0.0 (означает отсутствие вариации) до 1.0 (означает случайную 
+вариацию в пределах от начального цвета, до конечного).
+<dt>fAlphaVar
+<dd>Начальная вариация прозрачности от 0.0 (означает отсутствие вариации) до 1.0 (означает случайную 
+вариацию от начальной прозрачности, до конечной).
+</dl>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeparticle.h<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

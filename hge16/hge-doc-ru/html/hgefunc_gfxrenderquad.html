@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Gfx_RenderQuad</h1>
+<p>
+Отображает четырехугольник.
+</p>
+<pre>
+void Gfx_RenderQuad(
+  const hgeQuad *<i><b>quad</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>quad</i>
+<dd>Указатель на структуру <a href="hgedata_quad.html">hgeQuad</a>, описывающую четырехугольник, 
+который необходимо вывести.
+</dl>
+<h2>Примечания</h2>
+<p>
+Функция <b>Gfx_RenderQuad</b> должна вызываться между вызовами <a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a> 
+и <a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>.
+<br><br>
+Четырехугольник - простейший графический примитив <b>HGE</b>. Смотрите секцию <a href="hgedata_quad.html">Quad structure</a>
+для более подробной информации о четырехугольниках. Если поле <b>tex</b> структуры <b>quad</b> равно 
+0, в качестве текстуры используется белый цвет.
+Так же помните, что каждая из 4-х вершин четырехугольника может обладать собсвтенным цветом, альфой
+и значением Z-глубины. Четырехугольники автоматически сортируются для обеспечения наилучшего
+рендеринга смежных четырехугольников без дополнительных настроек экранных и текстурных координат.
+<br><br>
+В целях повышения производительности <b>Gfx_RenderQuad</b> накапливает смежные треугольники с
+одинаковой текстурой и параметрами смешивания и затем выводит их за один вызов <b>DirectX</b>.
+В большинстве случаев, вы не заметите никакой разницы и вообще не будете пользоваться
+последовательностями вообще. Но на всякий случай рекомендуется группировать вызовы 
+<b>Gfx_RenderQuad</b> по текстурам и режимам смешивания.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a>,
+<a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>,
+<a href="hgedata_quad.html">Quad structure</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeconst.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Системные переменные HGE</h1>
+<p>
+В <b>HGE</b> есть несколько различных внутренних переменных системы, которые можно установить или
+запросить с помощью функуций <a href="hgefunc_systemgetstate.html">System_GetState</a> и 
+<a href="hgefunc_systemsetstate.html">System_SetState</a>.
+Названия переменных заданы в перечислении <b>hgeState</b>:
+<br><br>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr class=titl><td width=32%>Переменная системы</td><td width=12%>Тип</td><td width=13%>Значение по 
+умолчанию</td><td>Описание</td></tr>
+<tr><td colspan=4>&nbsp;</td></tr>
+
+<tr>
+<td valign=top><a name=HGE_FRAMEFUNC></a><b>HGE_FRAMEFUNC</b></td>
+<td valign=top>bool*()</td><td valign=top>NULL</td>
+<td>
+Указатель на пользовательскую функцию кадра, которая не принимает параметров и возвращает <b>bool</b>.
+Эта функция будет вызвана каждвй кадр и когда она захчет закончить приложение, она должна вернуть 
+значение <b>true</b>. В противном случае она должна вернуть <b>false</b>. Если эта переменная не 
+установлена, функция <a href="hgefunc_systemstart.html">System_Start</a> закончится аварийно.
+Несмотря на то, что ее можно изменить в любое время позднее.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_FOCUSLOSTFUNC></a><b>HGE_FOCUSLOSTFUNC</b></td>
+<td valign=top>bool*()</td><td valign=top>NULL</td>
+<td>
+Указатель на пользовательскую функцию, которая будет вызываться, когда приложение теряет фокус (
+только когда пользователь переключается на другое приложение, не в тот момент, когда окно 
+разрушается) или перед сменой видео режима. Функция не принимает параметров и всегда возвращает <b>false</b>. 
+Эта переменная может быть установлена и изменена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><b><a name=HGE_FOCUSGAINFUNC></a>HGE_FOCUSGAINFUNC</b></td>
+<td valign=top>bool*()</td><td valign=top>NULL</td>
+<td>
+Указатель на пользовательскую функцию, которая будет вызвана в момент, когда приложение получит
+фокус (только когда пользователь переключится обратно из другого приложения, не в момент создания
+приложения) или после смены видео режима. Функция не принимает парметров и должна всегда возвращать <b>false</b>.
+Эта перменная может быть установлена и измененая в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><b><a name=HGE_EXITFUNC></a>HGE_EXITFUNC</b></td>
+<td valign=top>bool*()</td><td valign=top>NULL</td>
+<td>
+Указатель на пользовательскую функцию, которая будет вызвана в момент попытки пользователем закрыть 
+приложение. Если вы хотите позволить завершить приложение, функция должна вернуть значение <b>true</b>.
+Если она возвращает <b>false</b>, приложение продолжает выполнение.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr><td colspan=4><br><br></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_ICON></a><b>HGE_ICON</b></td>
+<td valign=top>char*</td><td valign=top>NULL</td>
+<td>
+Строка или значение, возвращаемое макросом <b>MAKEINTRESOURCE</b> из Win32 API, определяет ресурс-
+иконку, которая должна быть установлена для главного окна. Если эта переменная не установлена, окно 
+приложения будет иметь снадартную иконку Windows приложения. 
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_TITLE></a><b>HGE_TITLE</b></td>
+<td valign=top>char*</td><td valign=top>"HGE"</td>
+<td>
+Строка, которая является заголовком окна приложения.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_SCREENWIDTH></a><b>HGE_SCREENWIDTH</b></td>
+<td valign=top>int</td><td valign=top>800</td>
+<td>
+Желаемая ширина экрана приложения. В полноэкранном режиме это значение окраничивается возможностями 
+видеорежимов. Эта переменная должна быть установле до вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_SCREENHEIGHT></a><b>HGE_SCREENHEIGHT</b></td>
+<td valign=top>int</td><td valign=top>600</td>
+<td>
+Желаемая высота экрана приложения. В полноэкранном режиме это значение окраничивается возможностями
+видеорежимов. Эта переменная должна быть установле до вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_SCREENBPP></a><b>HGE_SCREENBPP</b></td>
+<td valign=top>int</td><td valign=top>32</td>
+<td>
+Желаемая глубина цвета экрана. Может принимать значения 16 и 32. В оконном режиме значение 
+ограничено глубиной цвета десктопа. При чтении, возвращается актуальная глубина, а не запрошенная.
+Эта переменная должна быть установлена до вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_WINDOWED></a><b>HGE_WINDOWED</b></td>
+<td valign=top>bool</td><td valign=top>false</td>
+<td>
+Приложение работает в полноэкранном или оконном режиме. Эта переменная может быть изменена в любое
+время, вне пары вызовов <a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a>/<a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_ZBUFFER></a><b>HGE_ZBUFFER</b></td>
+<td valign=top>bool</td><td valign=top>false</td>
+<td>
+Использовать или нет Z-буфер.
+Эта переменная должна быть установлена до вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_TEXTUREFILTER></a><b>HGE_TEXTUREFILTER</b></td>
+<td valign=top>bool</td><td valign=top>true</td>
+<td>
+Использовать или нет текстурную интерполяцию. Например, может оказаться полезным отключени
+фильтрации текстуры при выводе тайловой карты, так как драйвера некоторых видеокарт содержат ошибки,
+которые приводят к некорректной сшивке тайлов.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr><td colspan=4><br><br></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_INIFILE></a><b>HGE_INIFILE</b></td>
+<td valign=top>char*</td><td valign=top>NULL</td>
+<td>
+Имя инициализационного файла, которое используют функции <b>Ini_XXXXX</b>.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_LOGFILE></a><b>HGE_LOGFILE</b></td>
+<td valign=top>char*</td><td valign=top>NULL</td>
+<td>
+Имя файла протокола. Если эта переменная установлена, будет создан файл протокола и все сообщения о
+происходящих в <b>HGE</b> ошибках будет записаны в этот файл. Так же можно записывать свои
+собственные сообщения в файл протокола, используя функцию <a href="hgefunc_systemlog.html">System_Log</a>
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr><td colspan=4><br><br></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_USESOUND></a><b>HGE_USESOUND</b></td>
+<td valign=top>bool</td><td valign=top>true</td>
+<td>
+Использовать или нет звук в <b>HGE</b>.
+Установите эту переменную в <b>false</b> если вы не хотите использовать библиотеку <b>BASS</b>, а
+будете использовать свою реализацию звуковой системы или если приложение вообще не использует звук.
+Эта переменная может быть установлена и удалена в любое время.
+Помните, выключение звуковой системы автоматически удалит все загруженные до этого звуковые ресурсы.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_SAMPLERATE></a><b>HGE_SAMPLERATE</b></td>
+<td valign=top>int</td><td valign=top>44100</td>
+<td>
+Желаемая частота воспроизведения звуков.
+Значение ограничего возможностями аудиодрайвера.
+Эта переменная должна быть установлена до вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_FXVOLUME></a><b>HGE_FXVOLUME</b></td>
+<td valign=top>int</td><td valign=top>100</td>
+<td>
+Определяет глобальное значение громкости звуковых эффектов в пределах от 0 до 100.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_MUSVOLUME></a><b>HGE_MUSVOLUME</b></td>
+<td valign=top>int</td><td valign=top>100</td>
+<td>
+Определяет глобальное значение громкости музыки в пределах от 0 до 100.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr><td colspan=4><br><br></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_FPS></a><b>HGE_FPS</b></td>
+<td valign=top>int</td><td valign=top>0</td>
+<td>
+Определяет частоту (кадров в секунду), с которой будет вызываться функция кадра.
+Специальные значения: <b>HGEFPS_UNLIMITED</b> - частота не ограничена; <b>HGEFPS_VSYNC</b>
+- частота синхронизируется с частотой обнавления.
+Эта переменная может быть изменена в любое
+время, вне пары вызовов <a href="hgefunc_gfxbeginscene.html">Gfx_BeginScene</a>/<a href="hgefunc_gfxendscene.html">Gfx_EndScene</a>.</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_DONTSUSPEND></a><b>HGE_DONTSUSPEND</b></td>
+<td valign=top>bool</td><td valign=top>false</td>
+<td>
+Если эта переменная равна <b>true</b>, приложение не будет приостановлено при потере фокуса.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_HIDEMOUSE></a><b>HGE_HIDEMOUSE</b></td>
+<td valign=top>bool</td><td valign=top>true</td>
+<td>
+Скрыть или нет системный курсор мыши.
+Эта переменная может быть установлена и удалена в любое время.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_HWND></a><b>HGE_HWND</b></td>
+<td valign=top>int (HWND)</td><td valign=top>n/a</td>
+<td>
+Только для чтения. Если переменная прочитана между вызовами функций
+<a href="hgefunc_systeminitiate.html">System_Initiate</a>
+и <a href="hgefunc_systemshutdown.html">System_Shutdown</a>,
+возвращает идентификатор окна <b>HGE</b>. В противном случае 0.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+<tr>
+<td valign=top><a name=HGE_HWNDPARENT></a><b>HGE_HWNDPARENT</b></td>
+<td valign=top>int (HWND)</td><td valign=top>n/a</td>
+<td>
+Определяет родительское окно для окна <b>HGE</b> и включает дочерний режим работы.
+Эта переменная должна быть установлена до вызова функции <a href="hgefunc_systeminitiate.html">System_Initiate</a>.
+Смотрите подробности <a href="main_childwin.html">здесь</a>.
+</td>
+</tr>
+<tr><td colspan=4><img src="1.gif" width=1 height=7></td></tr>
+
+</table>
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_systemgetstate.html">System_GetState</a>,
+<a href="hgefunc_systemsetstate.html">System_SetState</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

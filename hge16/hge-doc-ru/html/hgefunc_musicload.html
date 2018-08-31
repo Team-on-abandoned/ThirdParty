@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Music_Load</h1>
+<p>
+Загружает музыку из памяти, архива ресурсов или диска.
+</p>
+<pre>
+HMUSIC Music_Load(
+  const char *<i><b>filename</b></i>,
+  DWORD <i><b>size</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>filename</i>
+<dd>Имя файла с музыкой.
+<dt><i>size</i>
+<dd>Если этот параметр не равен 0, то он означает количество блоков памяти, содержащих музыку в 
+одном из известных форматов и параметр <b>filename</b> рассматривается как указатель на блок памяти.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+В случае успеха, возвращается идентификатор музыки, который можно использовать в функции 
+<a href="hgefunc_musicplay.html">Music_Play</a>.
+Otherwise returns 0.
+</p>
+<h2>Примечания</h2>
+<p>
+Поддерживаются форматы <b>MO3</b>, <b>IT</b>, <b>XM</b>, <b>S3M</b>, <b>MTM</b>, <b>MOD</b> and <b>UMX</b>.
+<br><br>
+Если <b>filename</b> определяет относительный путь, музыкальный файл сначала ищется во всех 
+присоедененных с помощью функции <a href="hgefunc_resourceattachpack.html">Resource_AttachPack</a>
+архивах ресурсов, затем в директории приложения.
+Если <b>filename</b> определяет абсолютный путь, музыкальный файл загружается напрямую с диска.
+<br><br>
+Если функция завершается аварийно, вы можете получить сообщение об ошибке при помощи функции 
+<a href="hgefunc_systemgeterror.html">System_GetErrorMessage</a>. Если установлена переменная системы
+<a href="hgeconst_systemstate.html#HGE_LOGFILE">HGE_LOGFILE</a>, сообщение об ошибке будет записано 
+в файл протокола.
+<br><br>
+Если музыка больше не нужна, ее необходимо удали с помощью вызова функуии <a href="hgefunc_musicfree.html">Music_Free</a>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<h2>Смотрите также</h2>
+<p>
+<a href="hgefunc_musicfree.html">Music_Free</a>,
+<a href="hgefunc_musicplay.html">Music_Play</a>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

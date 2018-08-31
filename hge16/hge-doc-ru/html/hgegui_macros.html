@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgegui.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Макросы управления элементами управления</h1>
+<p>
+<b>Ч</b>тобы упростить стандартное управление элементами управления GUI, в <b>hgeguictrls.h</b> 
+определены некоторые макросы:
+</p>
+<pre>
+#define hgeButtonGetState(gui,id)
+              ((hgeGUIButton*)gui->GetCtrl(id))->GetState()
+
+#define hgeButtonSetState(gui,id,b)
+              ((hgeGUIButton*)gui->GetCtrl(id))->SetState(b)
+
+#define hgeSliderGetValue(gui,id)
+              ((hgeGUISlider*)gui->GetCtrl(id))->GetValue()
+
+#define hgeSliderSetValue(gui,id,f)
+              ((hgeGUISlider*)gui->GetCtrl(id))->SetValue(f)
+
+#define hgeGetTextCtrl(gui,id)
+              ((hgeGUIText*)gui->GetCtrl(id))
+</pre>
+<h2>Макрос</h2>
+<dl>
+<dt>hgeButtonGetState
+<dd>Возвращает состояние кнопки (<b>bool</b>). Параметр <b>gui</b> является указателем на объект 
+класса <a href="hgegui__main.html">hgeGUI</a> (<b>hgeGUI *</b>), а параметр <b>id</b> является 
+идентификатором кнопки (<b>int</b>).
+<dt>hgeButtonSetState
+<dd>Меняет состояние кнопки. Параметр <b>gui</b> является указателем на объект класса
+<a href="hgegui__main.html">hgeGUI</a> (<b>hgeGUI *</b>), а параметр <b>id</b> является 
+идентификатором кнопки (<b>int</b>). Параметр <b>b</b> определяет новое состояние кнопки (<b>bool</b>).
+<dt>hgeSliderGetValue
+<dd>Возвращает текущее положение бегунка (<b>float</b>). Параметр <b>gui</b> является указателем на 
+объект класса <a href="hgegui__main.html">hgeGUI</a> (<b>hgeGUI *</b>), а параметр <b>id</b> 
+является идентификатором бегунка (<b>int</b>).
+<dt>hgeSliderSetValue
+<dd>Меняет текущее положение бегунка. Параметр <b>gui</b> является указателем на объект класса
+<a href="hgegui__main.html">hgeGUI</a> (<b>hgeGUI *</b>), а параметр <b>id</b> является 
+идентификатором бегунка (<b>int</b>). Параметр <b>f</b> является новым положением бегунка (<b>float</b>).
+<dt>hgeGetTextCtrl
+<dd>Возвращает указатель на объект класса <a href="hgegui_guitext.html">hgeGUIText</a>, на основании 
+его идентификатора. Параметр <b>gui</b> является указателем на объект класса <a href="hgegui__main.html">hgeGUI</a> 
+(<b>hgeGUI *</b>), а параметр <b>id</b> идентификатором текстового элемента управления (<b>int</b>).
+</dl>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeguictrls.h<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

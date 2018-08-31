@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgegui.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Класс hgeGUIButton</h1>
+<p>
+<b>hgeGUIButton</b> является классом кнопки GUI. Чтобы создать объект класса <b>hgeGUIButton</b>
+можно воспольщоваться конструктором:
+</p>
+<pre>
+hgeGUIButton(
+  int       <i><b>id</b></i>,
+  float     <i><b>x</b></i>,
+  float     <i><b>y</b></i>,
+  float     <i><b>w</b></i>,
+  float     <i><b>h</b></i>,
+  HTEXTURE  <i><b>tex</b></i>,
+  float     <i><b>tx</b></i>,
+  float     <i><b>ty</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>id</i>
+<dd>Идентификатор созданного элемента управления.
+<dt><i>x</i>
+<dd>X координата левого верхнего угла кнопки.
+<dt><i>y</i>
+<dd>Y координата левого верхнего угла кнопки.
+<dt><i>w</i>
+<dd>Ширина кнопки.
+<dt><i>h</i>
+<dd>Высота кнопки.
+<dt><i>tex</i>
+<dd>Идентификатор текстуры, содержащий изображение кнопки. Текстура должна содержать два изображения,
+ одно для кнопки в ненажатом состоянии и точно справа от него изображение для кнопки в нажатом 
+ состоянии.
+<dt><i>tx</i>
+<dd>Координата x левого верхнего угла изображения кнопки в пикселях.
+<dt><i>ty</i>
+<dd>Координата y левого верхнего угла изображения кнопки в пикселях.
+</dl>
+<h2>Другие методы</h2>
+<p>
+<table width=486 cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><a href="hgegui_guibutton_setmode.html">SetMode</a></td>
+<td>Меняет режим поведения кнопки.</td>
+</tr>
+<tr>
+<td><a href="hgegui_guibutton_setstate.html">SetState</a></td>
+<td>Меняет состояние кнопки.</td>
+</tr>
+<tr>
+<td><a href="hgegui_guibutton_getstate.html">GetState</a></td>
+<td>Возвращает состояние кнопки.</td>
+</tr>
+</table>
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgeguictrls.h<br>
+<b>Библиотека импорта:</b> hgehelp.lib<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_peditor.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Файлы инициализации Редактора Систем Частиц HGE</h1>
+<h2>Файл инициализации</h2>
+<p>
+Редактор Систем Частиц <b>HGE</b> содержит параметры настройки в файле <b>particleed.ini</b>.
+Поэтому вы можете изменять их, настраивая тем самым поведение редактора. На данный момент, 
+поддерживаются следующие параметры:
+</p>
+<dl>
+<dt>FullScreen
+<dd>Если равно 1, редактор запускается в полноэкранном режиме. Если равно 0, редактор запускается в 
+оконном режиме. Значение по умолчанию 0.
+</dl>
+<dl>
+<dt>UpdatesPerSec
+<dd>Определяет число обнавлений системы частиц в секунду. Если равно 0, число обновлений 
+неограничего и зависит от скорости выполнения. Значение по умолчанию 50.
+</dl>
+<h2>Файл с изображением частиц</h2>
+<p>
+Другой файл, который может вас заинтересовать - файл <b>particles.png</b>, который содержит спрайты. 
+Он состоит из 16-ти изображений размеров 32x32, которые используются для отображения системы частиц 
+в редакторе. Вы можете изменять любое из изображений или весь файл целиком. По умолчанию 
+представлены моно-цветные изображения, но вы можете использовать и цветные. Запомните, при 
+сохранении <b>PNG</b>, необходимо записать и альфаканал, если вы планируете использовать не только
+режим смешивания "добавление".
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

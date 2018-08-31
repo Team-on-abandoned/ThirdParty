@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Target_GetTexture</h1>
+<p>
+Возвращает идентификатор текстуры цели рендеринга.
+</p>
+<pre>
+HTEXTURE Target_GetTexture(
+  HTARGET <i><b>target</b></i>
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>target</i>
+<dd>Идентификатор цели рендеринга, идентификатор текстуры который будет возвращен.
+</dl>
+<h2>Возвращаемое значение</h2>
+<p>
+Возвращает идентификатор текстуры цели рендеринга.
+</p>
+<h2>Примечания</h2>
+<p>
+Можете использовать полученную текстуру для отображения на экран или в другие цели рендеринга.
+<br><br>
+<b>Не удаляйте</b> текстуры, полученные вызовом функции <b>Target_GetTexture</b>!
+Результат такой операции непредсказуем. Тексутра цели рендеринга автоматически удаляется во время 
+удалния цели рендеринга.
+<br><br>
+Идентификатор текстуры, который вернула <b>Target_GetTexture</b> может меняться, если приложение 
+теряет фокус. Поэтому запрашивайте идентификатор каждый раз, когда он вам необходим. Если вы хотите 
+использовать кеширование идентификаторов, тогда вам необходимо обновлять их в функции получения 
+фокуса (смотрите далее).
+<br><br>
+Содержимое цели рендерига теряется, когда приложение теряет фокус. Если вы отображаете текстуру 
+каждый кадр - это не проблема. Но если вы отображаете ее только один раз при запуске - вам 
+необходимо перерисовывать ее при получении фокуса. Чтобы этого добиться, напишите функцию получения 
+фокуса и присоедините ее устанавливая переменную системы <a href="hgeconst_systemstate.html#HGE_FOCUSGAINFUNC">HGE_FOCUSGAINFUNC</a>.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

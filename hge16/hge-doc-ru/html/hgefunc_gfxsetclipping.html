@@ -1,0 +1,62 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgefunc.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">HGE::Gfx_SetClipping</h1>
+<p>
+Устанавливает область отчечения для всех графических объектов, выводимых далее.
+</p>
+<pre>
+void Gfx_SetClipping(
+  int <i><b>x</b></i> = 0,
+  int <i><b>y</b></i> = 0,
+  int <i><b>w</b></i> = 0,
+  int <i><b>h</b></i> = 0
+);
+</pre>
+<h2>Параметры</h2>
+<dl>
+<dt><i>x</i>
+<dd>X координата левой верхней точки области отсечения.
+<dt><i>y</i>
+<dd>Y координата левой верхней точки области отсечения.
+<dt><i>w</i>
+<dd>Ширина области отсечения.
+<dt><i>h</i>
+<dd>Высота области отсечения.
+</dl>
+<h2>Примечания</h2>
+<p>
+Если все параметры равны 0 или опущены, область отсечения сбрасывается до размеров всей цели 
+рендеринга. Когда цель рендеринга переключается, область отсечения так же сбрасывается до всей цели 
+рендеринга.
+<br><br>
+<b>Gfx_SetClipping</b> сбрасывает в видеоадаптер все накопленные графические примитивы.
+</p>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hge.h<br>
+<b>Библиотека импорта:</b> hge.lib
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>

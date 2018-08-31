@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- http://hge.relishgames.com -->
+
+<html>
+
+<head>
+<meta name="Keywords" content="game engine, 2d, hardware accelerated, hge, engine, relish games, game development">
+<meta name="Description" content="Haaf's Game Engine - Hardware accelerated 2D games engine">
+<title>Haaf's Game Engine - Игровой 2D движок с поддержкой аппаратного ускорения</title>
+<link rel=stylesheet type=text/css href=hge.css>
+<script language="JavaScript" src="hge.js"></script>
+</head>
+
+<body onload="setContents('cnt_hgeguio.html');" bgcolor=#ffffff text=#000000 link=#7F0000 vlink=#7F0000 alink=#7F0000 marginwidth=0 marginheight=0 leftmargin=0 topmargin=0>
+<table height=100% cellspacing=0 cellpadding=0 border=0><tr>
+
+<td valign=top>
+<table width=566 cellspacing=0 cellpadding=20 border=0><tr><td>
+<h1 style="margin-top:0px">Члены класса hgeGUIObject</h1>
+<p>
+Все члены класса <b>hgeGUIObject</b> являются public, поэтому вы имеете к ним прямой доступ:
+</p>
+<pre>
+int      <i><b>id</b></i>;
+bool     <i><b>bStatic</b></i>;
+bool     <i><b>bVisible</b></i>;
+bool     <i><b>bEnabled</b></i>;
+hgeRect  <i><b>rect</b></i>;
+
+hgeGUI       *<i><b>gui</b></i>;
+hgeGUIObject *<i><b>next</b></i>;
+hgeGUIObject *<i><b>prev</b></i>;
+
+static HGE *<i><b>hge</b></i>;
+</pre>
+<h2>Члены класса</h2>
+<dl>
+<dt>id
+<dd>Ваш конструктор должен инициализировать это поле идентификатором элемента управления 
+используемым в GUI.
+<dt>bStatic
+<dd>Если это поле равно <b>true</b>, элемент управления не может получить фокус и не будет получать 
+события от клавиатуры. Так же элемент управления пропускается функциями навигации. Вы должны 
+инициализировать <b>bStatic</b> в конструкторе.
+<dt>bVisible
+<dd>Если это поле равно <b>true</b>, элемент управления будет рисоваться со всем GUI, в противном 
+случае он будет невидим. Вы должны инициализировать <b>bVisible</b> в конструкторе.
+<dt>bEnabled
+<dd>Если это поле равно <b>false</b>, элемент не должен реагировать на ввод пользователя. Элемент 
+все еще получает уведомления, так что это ваша задача, корректно обрабатывать это поле. Вы должны 
+инициализировать <b>bEnabled</b> в конструкторе.
+<dt>rect
+<dd>Это поле содержит ограничивающий прямоугольник с экранными координатами. Вы должны 
+инициализировать <b>rect</b> в конструкторе.
+<dd>&nbsp;
+<dt>&nbsp;
+<dt>gui
+<dd>Это указатель на объект GUI, который использует элемент управления. Это поле инициализируется 
+GUI когда элемент управления добавляется к нему. Вы можете использовать <b>gui</b> для общения с GUI,
+ но не можете изменять его.
+<dt>next
+<dd>Это внутреннее поле, используется для связи всех элементов друг с другом. Производные классы не 
+должны изменять его.
+<dt>prev
+<dd>Это внутреннее поле, используемое для связи всех элементов друг с другом. Производные классы не 
+должны изменять его.
+<dd>&nbsp;
+<dt>&nbsp;
+<dt>hge
+<dd>Это указатель, который вы можете использовать в производном классе для доступа к интерфейсу
+ <b>HGE</b>.
+</dl>
+<h2>Требования</h2>
+<p>
+<b>Заголовок:</b> hgegui.h<br>
+</p>
+<br>
+</td></tr></table>
+</td>
+
+</tr></table>
+</body>
+
+</html>
