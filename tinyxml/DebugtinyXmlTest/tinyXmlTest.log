@@ -1,0 +1,3 @@
+﻿  xmltest.cpp
+xmltest.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/SAFESEH' specification
+  tinyXmlTest.vcxproj -> D:\code\[C++] Tetris 2017\code\tinyxml\DebugtinyXmlTest\tinyXmlTest.exe

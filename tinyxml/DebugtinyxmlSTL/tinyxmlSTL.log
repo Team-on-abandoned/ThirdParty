@@ -1,0 +1,8 @@
+﻿  tinyxmlparser.cpp
+  tinyxmlerror.cpp
+  tinyxml.cpp
+d:\code\[c++] tetris 2017\code\tinyxml\tinyxml.cpp(670): warning C4458: declaration of 'value' hides class member
+  d:\code\[c++] tetris 2017\code\tinyxml\tinyxml.h(761): note: see declaration of 'TiXmlNode::value'
+  tinystr.cpp
+  Generating Code...
+  tinyxmlSTL.vcxproj -> D:\code\[C++] Tetris 2017\code\tinyxml\DebugtinyxmlSTL\tinyxmlSTL.lib
