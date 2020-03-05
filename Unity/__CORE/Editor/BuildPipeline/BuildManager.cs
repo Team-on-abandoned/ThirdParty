@@ -15,13 +15,16 @@ using Debug = UnityEngine.Debug;
 //TODO: publish to itch.io via butler
 public static class BuildManager {
 	//TODO: move to settings that can be changed in editor;
-	const string butlerRelativePath = @"Thirdparty/Editor/butler/butler.exe";
+	const string butlerRelativePath = @"Editor/butler/butler.exe";
 	static string[] channelNames = new string[] {
 		"windows-32",
 		"windows-64",
 		"linux-universal",
 		"osx-universal",
 		"webgl",
+		"android",
+		"ios",
+		"uwp",
 	};
 
 
@@ -81,6 +84,7 @@ public static class BuildManager {
 		buildsPath.Add(BuildLinux(true));
 		buildsPath.Add(BuildOSX(true));
 		buildsPath.Add(BuildWeb(true));
+		buildsPath.Add(BuildAndroid(true));
 
 		EditorUserBuildSettings.SwitchActiveBuildTarget(targetGroupBeforeStart, targetBeforeStart);
 		Debug.Log($"End building all. Elapsed time: {string.Format("{0:mm\\:ss}", DateTime.Now - startTime)}");
@@ -163,8 +167,32 @@ public static class BuildManager {
 		);
 	}
 
+	public static string BuildAndroid(bool isInBuildSequence) {
+		return BaseBuild(
+			BuildTargetGroup.Android, BuildTarget.Android,
+			isInBuildSequence ? BuildOptions.None : BuildOptions.ShowBuiltPlayer,
+			!isInBuildSequence,
+			!isInBuildSequence,
+			".apk",
+			$".apk"
+		);
+	}
+
+	public static string BuildIos(bool isInBuildSequence) {
+		return BaseBuild(
+			BuildTargetGroup.iOS, BuildTarget.iOS,
+			isInBuildSequence ? BuildOptions.None : BuildOptions.ShowBuiltPlayer,
+			!isInBuildSequence,
+			!isInBuildSequence,
+			".ipa",
+			$".ipa"
+		);
+	}
+
 	static string BaseBuild(BuildTargetGroup buildTargetGroup, BuildTarget buildTarget, BuildOptions buildOptions, bool needReturnBuildTarget, bool incrementPatch, string folderPath, string buildPath) {
-		string basePath = $"Builds/{PlayerSettings.productName}_{PlayerSettings.bundleVersion}.{LastBuildPatch}";
+		folderPath = folderPath.Replace(' ', '-');
+		buildPath = buildPath.Replace(' ', '-');
+		string basePath = $"Builds/{PlayerSettings.productName}_{PlayerSettings.bundleVersion}.{LastBuildPatch}".Replace(' ', '-');
 		BuildTarget targetBeforeStart = EditorUserBuildSettings.activeBuildTarget;
 		BuildTargetGroup targetGroupBeforeStart = BuildPipeline.GetBuildTargetGroup(targetBeforeStart);
 
@@ -210,7 +238,10 @@ public static class BuildManager {
 	public static void Compress(string dirPath) {
 		using (ZipFile zip = new ZipFile()) {
 			DateTime startTime = DateTime.Now;
-			zip.AddDirectory(dirPath);
+			if(Directory.Exists(dirPath))
+				zip.AddDirectory(dirPath);
+			else
+				zip.AddFile(dirPath);
 			zip.Save(dirPath + ".zip");
 
 			long uncompresedSize = 0;
@@ -230,13 +261,13 @@ public static class BuildManager {
 		fileName.Append("/");
 		fileName.Append(butlerRelativePath);
 
-		args.Append("push \"");
+		args.Append(" push \"");
 		args.Append(Application.dataPath);
 		args.Append("/../");
 		args.Append(dirPath);
 		args.Append("\" ");
 
-		args.Append($"teamon/{PlayerSettings.productName}:{channelName} ");
+		args.Append($"teamon/{PlayerSettings.productName.Replace(' ', '-')}:{channelName} ");
 		args.Append($"--userversion {PlayerSettings.bundleVersion}.{LastBuildPatch} ");
 
 		Debug.Log(fileName.ToString() + args.ToString());
